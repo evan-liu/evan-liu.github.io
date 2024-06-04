@@ -51,6 +51,13 @@ export default {
           position: 'left',
           label: "🌱 Evan's Digital Garden",
         },
+        {
+          type: 'html',
+          value: `<a href="https://github.com/evan-liu/evan-liu.github.io" style="display: flex">
+            <img src="https://img.shields.io/github/stars/evan-liu/evan-liu.github.io" alt="GitHub Stars">
+          </a>`,
+          position: 'right',
+        },
       ],
     },
     footer: {
