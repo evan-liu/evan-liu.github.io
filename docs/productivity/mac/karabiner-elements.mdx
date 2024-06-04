@@ -3,8 +3,8 @@ title: Karabiner-Elements
 description: A powerful and stable keyboard customizer for macOS.
 ---
 
-[Karabiner-Elements](https://karabiner-elements.pqrs.org/) is very powerful,
-however, the JSON config format is hard to use for complex mappings.
+[Karabiner-Elements](https://karabiner-elements.pqrs.org/) is a very powerful
+keyboard customizer, however, the JSON config format is hard to use for complex mappings.
 So I created a tool, [karabiner.ts](https://github.com/evan-liu/karabiner.ts),
 to write the config in TypeScript with strong-typing and abstracted features.
 
@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem'
 ---
 
 One excellent starter on the Apple keyboard is to map `⇪` (`caps_lock`) to `Hyper`
-(`⌘⌥⌃⇧`) modifier when pressed-and-held (and still work as `⇪` when tapped):
+(`⌘⌥⌃⇧`) modifier when press-and-hold (and still work as `⇪` when tap):
 
 ```typescript
 map('⇪').toHyper().toIfAlone('⇪') // Or map('caps_lock').toHyper().toIfAlone('caps_lock')
