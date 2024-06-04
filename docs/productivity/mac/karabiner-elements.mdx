@@ -1,0 +1,70 @@
+---
+title: Karabiner-Elements
+description: A powerful and stable keyboard customizer for macOS.
+---
+
+[Karabiner-Elements](https://karabiner-elements.pqrs.org/) is very powerful,
+however, the JSON config format is hard to use for complex mappings.
+So I created a tool, [karabiner.ts](https://github.com/evan-liu/karabiner.ts),
+to write the config in TypeScript with strong-typing and abstracted features.
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+<Tabs>
+  <TabItem value="download" label="Download">
+    https://karabiner-elements.pqrs.org/
+  </TabItem>
+  <TabItem value="homebrew" label="Brew install" default>
+    `brew install --cask karabiner-elements`
+  </TabItem>
+  <TabItem value="brewfile" label="Brewfile">
+    `cask "karabiner-elements"`
+  </TabItem>
+</Tabs>
+
+---
+
+One excellent starter on the Apple keyboard is to map `⇪` (`caps_lock`) to `Hyper`
+(`⌘⌥⌃⇧`) modifier when pressed-and-held (and still work as `⇪` when tapped):
+
+```typescript
+map('⇪').toHyper().toIfAlone('⇪') // Or map('caps_lock').toHyper().toIfAlone('caps_lock')
+```
+
+Then you can bind `⇪` (`Hyper`) `+` keys to [Raycast](./raycast) commands, or to
+switch apps like:
+
+- `Hyper+v` -> Paste with Raycast Clipboard History
+- `Hyper+f` -> Switch to `Finder` app
+
+If you are a `Vim` user, you can map it to `⎋` instead when tapped:
+
+```typescript
+map('⇪').toHyper().toIfAlone('⎋') // Or map('caps_lock').toHyper().toIfAlone('escape')
+```
+
+If you'd like to keep the `⇪` key, you can bind it to `⇧+⇪`:
+
+```typescript
+map('⇪').toHyper().toIfAlone('⎋') // Or map('caps_lock').toHyper().toIfAlone('escape')
+
+// highlight-next-line
+map('⇪', '⇧').to('⇪') // Or map('caps_lock', 'shift').to('caps_lock')
+```
+
+- Tap `⇪` -> `⎋`
+- Held `⇪` -> `Hyper` (`⌘⌥⌃⇧`)
+- `⇧ + ⇪` -> `⇪`
+  - `⇪` (without `⇧`) -> `⇪` (`caps_lock` off)
+
+Now, imagine you can make every key on the keyboard a
+[layer](https://evan-liu.github.io/karabiner.ts/rules/layer), which when pressed
+and held, allow every other key on the keyboard to do something like:
+
+- Launch or switch to an app
+- Move or resize the current app window
+- Run **anything** on the computer
+
+👨‍💻 My config is [here](https://github.com/evan-liu/karabiner-config/blob/main/src/index.ts).
+I will add more details on how I use it later.
