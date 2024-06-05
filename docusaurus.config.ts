@@ -72,4 +72,17 @@ export default {
       additionalLanguages: ['bash', 'ruby'],
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    function tailwindPlugin(context, options) {
+      return {
+        name: 'tailwindcss-plugin',
+        configurePostCss(postcssOptions) {
+          postcssOptions.plugins.push(require('tailwindcss'))
+          postcssOptions.plugins.push(require('autoprefixer'))
+          return postcssOptions
+        },
+      }
+    },
+  ],
 } satisfies Config
