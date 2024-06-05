@@ -38,12 +38,10 @@ export default {
   ],
 
   themeConfig: {
+    colorMode: {
+      respectPrefersColorScheme: true,
+    },
     navbar: {
-      title: '',
-      logo: {
-        alt: 'Site Logo',
-        src: 'img/logo.svg',
-      },
       items: [
         {
           type: 'docSidebar',
@@ -60,15 +58,10 @@ export default {
         },
       ],
     },
-    footer: {
-      style: 'dark',
-      links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} Evan Liu. \
-        Built with <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.`,
-    },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      defaultLanguage: 'typescript',
       additionalLanguages: ['bash', 'ruby'],
     },
   } satisfies Preset.ThemeConfig,
