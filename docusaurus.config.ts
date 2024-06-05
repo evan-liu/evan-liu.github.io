@@ -3,7 +3,7 @@ import type { Config } from '@docusaurus/types'
 import { themes as prismThemes } from 'prism-react-renderer'
 
 export default {
-  title: "Evan's Garden",
+  title: 'Evan Liu',
   favicon: 'img/favicon.ico',
 
   url: 'https://evan-liu.github.io',
@@ -45,9 +45,9 @@ export default {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'garden',
+          sidebarId: 'main',
           position: 'left',
-          label: "🌱 Evan's Digital Garden",
+          label: 'Evan Liu',
         },
         {
           type: 'html',
