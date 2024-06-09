@@ -8,6 +8,7 @@ export default {
       label: 'Productivity',
       link: { type: 'generated-index' },
       items: [
+        'productivity/lazy-developer',
         {
           type: 'category',
           label: '🛠 Mac',
