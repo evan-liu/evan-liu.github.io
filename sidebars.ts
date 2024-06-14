@@ -31,5 +31,14 @@ export default {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Software Engineering',
+      link: { type: 'generated-index' },
+      items: [
+        'software-engineering/best-practices',
+        //
+      ],
+    },
   ],
 } satisfies SidebarsConfig
