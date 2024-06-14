@@ -1,1 +1,3 @@
-[My personal website](https://evan-liu.github.io/) built with [Docusaurus](https://docusaurus.io/).
+[Evan-Liu.dev](https://evan-liu.github.io/)
+
+My personal website built with [Docusaurus](https://docusaurus.io/).
