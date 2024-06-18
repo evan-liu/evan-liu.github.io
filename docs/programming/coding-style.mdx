@@ -71,3 +71,17 @@ However, type checks like `if (typeof x == 'boolean')...` are more preferred.
 
 Another (edge) case is `[] == ![]`. I am not sure if I will ever encounter it.
 Will update if I ever do.
+
+### Named exports v.s. Default exports
+
+For a JavaScript module, `export`s are public APIs,
+for which I prioritize Clarity at the Call Site.
+So whether to use named or default exports depends on how the module is used.
+
+When the `export` is imported on the call site and used in code with a name,
+the name should be part of the API, Therefore, named exports should be used.
+
+When a third-party tool loads the module,
+instead of it being imported and used in code,
+a default export should be used.
+In most cases, it is the sole purpose of the entire module.
