@@ -40,5 +40,14 @@ export default {
         //
       ],
     },
+    {
+      type: 'category',
+      label: 'Programming',
+      link: { type: 'generated-index' },
+      items: [
+        'programming/coding-style',
+        //
+      ],
+    },
   ],
 } satisfies SidebarsConfig
