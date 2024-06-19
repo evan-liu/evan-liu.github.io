@@ -15,6 +15,39 @@ no conflicting team rules.
 - For APIs (functions, etc.), prioritize **Clarity** at the **Call Site**.
 - Avoid noise and low or no value chores, in code and future change diffs.
 
+## General
+
+### File Structure
+
+There are two popular flavors on file structure:
+
+- Grouping by file type (`src/ & test/`, `models/ & controllers/`, `components/ & hooks/`, etc.)
+- Grouping by features (colocation)
+
+I prefer colocation, "things change together are placed close to each other."
+
+The [file nesting](https://www.jetbrains.com/help/idea/file-nesting-dialog.html)
+feature from JetBrains IDEs makes the experience even better with colocation.
+
+### Naming
+
+My favourite style guide on naming is from
+[Swift API Design Guidelines](https://www.swift.org/documentation/api-design-guidelines/#naming).
+There is one thing that I do differently:
+
+> [Acronyms and initialisms](https://en.wikipedia.org/wiki/Acronym)
+> that commonly appear as all upper case in American English should be uniformly
+> up- or down-cased according to case conventions:
+>
+> ```
+> var utf8Bytes: [UTF8.CodeUnit]
+> var isRepresentableAsASCII = true
+> var userSMTPServer: SecureSMTPServer
+> ```
+
+I find `camelCase` easier to read when the acronym isn't the last word,
+particularly when one acronym follows another.
+
 ## JavaScript / TypeScript {#javascript-typescript}
 
 ### Prettier
@@ -75,7 +108,7 @@ Will update if I ever do.
 ### Named exports v.s. Default exports
 
 For a JavaScript module, `export`s are public APIs,
-for which I prioritize Clarity at the Call Site.
+for which I prioritize **Clarity** at the **Call Site**.
 So whether to use named or default exports depends on how the module is used.
 
 When the `export` is imported on the call site and used in code with a name,
