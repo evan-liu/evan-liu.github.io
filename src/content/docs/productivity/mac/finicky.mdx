@@ -1,0 +1,41 @@
+---
+title: Finicky
+description: Set up rules that decide which browser to open for every link.
+sidebar:
+  label: Finicky | Browser Start
+tableOfContents: false
+---
+
+[Finicky](https://github.com/johnste/finicky) allows you to set up rules that decide which browser is opened for every link or url.
+Set [Finicky](https://github.com/johnste/finicky) as the default browser and write the rules in `~/.finicky.js`.
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+
+<Tabs>
+  <TabItem label="Brew install">`brew install --cask finicky`</TabItem>
+  <TabItem label="Brewfile">`cask "finicky"`</TabItem>
+  <TabItem label="Download">https://github.com/johnste/finicky</TabItem>
+</Tabs>
+
+---
+
+👨‍💻 I use `Google Chrome` for work and dev, for its better dev tools;
+and `Safari` for personal use, for its better integration with the Apple ecosystem.
+
+[Finicky](https://github.com/johnste/finicky) makes sure links in IMs (e.g. `Slack`) and email clients opens the right browser.
+
+```javascript title="~/.finicky.js"
+module.exports = {
+  defaultBrowser: 'Safari',
+  handlers: [
+    {
+      match: finicky.matchHostnames([
+        /\bgithub\.com$/, // Big PRs break Safari
+        'localhost', // Chrome dev tool is better
+        // ... other work and dev sites
+      ]),
+      browser: 'Google Chrome',
+    },
+  ],
+}
+```

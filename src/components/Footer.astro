@@ -1,0 +1,30 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro'
+
+let isHomepage = Astro.props.slug == ''
+---
+
+{
+  !isHomepage && (
+    <script
+      src="https://giscus.app/client.js"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      data-repo="evan-liu/evan-liu.github.io"
+      data-repo-id="R_kgDOMD_nTg"
+      data-category="giscus"
+      data-category-id="DIC_kwDOMD_nTs4CgPLE"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="0"
+      data-emit-metadata="0"
+      data-input-position="top"
+      crossorigin="anonymous"
+      data-loading="lazy"
+      async
+      is:inline
+    />
+  )
+}
+
+<Default {...Astro.props} />
