@@ -1,0 +1,11 @@
+---
+import { LinkCard } from '@astrojs/starlight/components'
+
+interface Props {
+  url: string
+}
+
+let { url } = Astro.props
+---
+
+<LinkCard href={url} title={url} target="_blank" />

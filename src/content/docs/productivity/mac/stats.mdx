@@ -9,14 +9,22 @@ tableOfContents: false
 [Stats](https://github.com/exelban/stats) is a macOS system monitor in the menu bar.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
+import BrewInstallCask from '@components/BrewInstallCask.astro'
+import BrewfileCask from '@components/BrewfileCask.astro'
+import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Brew install">`brew install --cask stats`</TabItem>
-  <TabItem label="Brewfile">`cask "stats"`</TabItem>
-  <TabItem label="Download">https://github.com/exelban/stats</TabItem>
-</Tabs>
+  <TabItem label="Brew install">
+    <BrewInstallCask name="stats" />
+  </TabItem>
+  <TabItem label="Brewfile">
+    <BrewfileCask name="stats" />
+  </TabItem>
+  <TabItem label="Download">
+    <DownloadCard url="https://github.com/exelban/stats" />
+  </TabItem>
 
----
+</Tabs>
 
 ![img](https://camo.githubusercontent.com/e31d4b6f957a6869075ad87b86e98026654175507d59679d09931867ec854f88/68747470733a2f2f7365726869792e73332e65752d63656e7472616c2d312e616d617a6f6e6177732e636f6d2f4769746875625f7265706f2f73746174732f6d656e757325334676322e332e322e706e673f7631)
 

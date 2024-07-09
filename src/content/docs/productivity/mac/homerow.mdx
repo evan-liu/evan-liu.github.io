@@ -12,9 +12,12 @@ It is like [Vimium](https://chromewebstore.google.com/detail/vimium/dbepggeogbai
 extension for Google Chrome, at the system level.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
+import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Download">https://www.homerow.app/</TabItem>
+  <TabItem label="Download">
+    <DownloadCard url="https://www.homerow.app/" />
+  </TabItem>
 </Tabs>
 
 ---

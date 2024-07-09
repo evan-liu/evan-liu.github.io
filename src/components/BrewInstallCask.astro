@@ -1,0 +1,12 @@
+---
+import { Code } from '@astrojs/starlight/components'
+
+interface Props {
+  name: string
+}
+
+let { name } = Astro.props
+let code = `brew install --cask ${name}`
+---
+
+<Code code={code} lang="bash" frame={false} />

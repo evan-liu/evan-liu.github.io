@@ -9,14 +9,21 @@ tableOfContents: false
 [Shottr](https://shottr.cc) is a Mac screenshot tool with annotations, scrolling screenshots, etc.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
+import BrewInstallCask from '@components/BrewInstallCask.astro'
+import BrewfileCask from '@components/BrewfileCask.astro'
+import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Brew install">`brew install --cask shottr`</TabItem>
-  <TabItem label="Brewfile">`cask "shottr"`</TabItem>
-  <TabItem label="Download">https://shottr.cc</TabItem>
+  <TabItem label="Brew install">
+    <BrewInstallCask name="shottr" />
+  </TabItem>
+  <TabItem label="Brewfile">
+    <BrewfileCask name="shottr" />
+  </TabItem>
+  <TabItem label="Download">
+    <DownloadCard url="https://shottr.cc" />
+  </TabItem>
 </Tabs>
-
----
 
 ![img](https://shottr.cc/assets/15-preview.png)
 

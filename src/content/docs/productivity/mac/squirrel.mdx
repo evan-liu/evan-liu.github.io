@@ -9,14 +9,22 @@ tableOfContents: false
 [Squirrel](https://github.com/rime/squirrel) (鼠鬚管, [Rime](https://rime.im/) for macOS) is a Chinese input source.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
+import BrewInstallCask from '@components/BrewInstallCask.astro'
+import BrewfileCask from '@components/BrewfileCask.astro'
+import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Brew install">`brew install --cask squirrel`</TabItem>
-  <TabItem label="Brewfile">`cask "squirrel"`</TabItem>
-  <TabItem label="Download">https://rime.im/download/</TabItem>
-</Tabs>
+  <TabItem label="Brew install">
+    <BrewInstallCask name="squirrel" />
+  </TabItem>
+  <TabItem label="Brewfile">
+    <BrewfileCask name="squirrel" />
+  </TabItem>
+  <TabItem label="Download">
+    <DownloadCard url="https://rime.im/download/" />
+  </TabItem>
 
----
+</Tabs>
 
 :::tip[简体输入]
 按組合鍵 ``Ctrl+` `` 或 `F4` 鍵喚出輸入方案選單

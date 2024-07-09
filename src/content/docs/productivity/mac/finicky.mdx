@@ -9,15 +9,22 @@ tableOfContents: false
 [Finicky](https://github.com/johnste/finicky) allows you to set up rules that decide which browser is opened for every link or url.
 Set [Finicky](https://github.com/johnste/finicky) as the default browser and write the rules in `~/.finicky.js`.
 
-import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { Tabs, TabItem, LinkCard } from '@astrojs/starlight/components'
+import BrewInstallCask from '@components/BrewInstallCask.astro'
+import BrewfileCask from '@components/BrewfileCask.astro'
+import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Brew install">`brew install --cask finicky`</TabItem>
-  <TabItem label="Brewfile">`cask "finicky"`</TabItem>
-  <TabItem label="Download">https://github.com/johnste/finicky</TabItem>
+  <TabItem label="Brew install">
+    <BrewInstallCask name="finicky" />
+  </TabItem>
+  <TabItem label="Brewfile">
+    <BrewfileCask name="finicky" />
+  </TabItem>
+  <TabItem label="Download">
+    <DownloadCard url="https://github.com/johnste/finicky" />
+  </TabItem>
 </Tabs>
-
----
 
 👨‍💻 I use `Google Chrome` for work and dev, for its better dev tools;
 and `Safari` for personal use, for its better integration with the Apple ecosystem.

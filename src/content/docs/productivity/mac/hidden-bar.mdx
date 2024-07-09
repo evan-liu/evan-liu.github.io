@@ -10,14 +10,19 @@ tableOfContents: false
 hide menu bar items and only show them when needed.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
+import BrewfileMas from '@components/BrewfileMas.astro'
 
 <Tabs>
   <TabItem label="App Store">
-    <a href="https://apps.apple.com/app/hidden-bar/id1452453066">
+    <a
+      href="https://apps.apple.com/app/hidden-bar/id1452453066"
+      target="_blank">
       <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" />
     </a>
   </TabItem>
-  <TabItem label="Brewfile">`mas "Hidden Bar", id: 1452453066`</TabItem>
+  <TabItem label="Brewfile">
+    <BrewfileMas name="Hidden Bar" id={1452453066} />
+  </TabItem>
 </Tabs>
 
 ---

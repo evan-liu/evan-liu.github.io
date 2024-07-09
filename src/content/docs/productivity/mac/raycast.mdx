@@ -12,14 +12,21 @@ to add own [scripts](https://manual.raycast.com/script-commands)
 and [extensions](https://developers.raycast.com/basics/create-your-first-extension#create-a-new-extension).
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
+import BrewInstallCask from '@components/BrewInstallCask.astro'
+import BrewfileCask from '@components/BrewfileCask.astro'
+import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Brew install">`brew install --cask raycast`</TabItem>
-  <TabItem label="Brewfile">`cask "raycast"`</TabItem>
-  <TabItem label="Download">https://www.raycast.com/</TabItem>
+  <TabItem label="Brew install">
+    <BrewInstallCask name="raycast" />
+  </TabItem>
+  <TabItem label="Brewfile">
+    <BrewfileCask name="raycast" />
+  </TabItem>
+  <TabItem label="Download">
+    <DownloadCard url="https://www.raycast.com/" />
+  </TabItem>
 </Tabs>
-
----
 
 👨‍💻 Features I use every day:
 

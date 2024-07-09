@@ -11,17 +11,22 @@ keyboard customizer, however, the JSON config format is hard to use for complex 
 So I created a tool, [karabiner.ts](https://github.com/evan-liu/karabiner.ts),
 to write the config in TypeScript with strong-typing and abstracted features.
 
-import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { TabItem, Tabs } from '@astrojs/starlight/components'
+import BrewInstallCask from '@components/BrewInstallCask.astro'
+import BrewfileCask from '@components/BrewfileCask.astro'
+import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
   <TabItem label="Brew install">
-    `brew install --cask karabiner-elements`
+    <BrewInstallCask name="karabiner-elements" />
   </TabItem>
-  <TabItem label="Brewfile">`cask "karabiner-elements"`</TabItem>
-  <TabItem label="Download">https://karabiner-elements.pqrs.org/</TabItem>
+  <TabItem label="Brewfile">
+    <BrewfileCask name="karabiner-elements" />
+  </TabItem>
+  <TabItem label="Download">
+    <DownloadCard url="https://karabiner-elements.pqrs.org/" />
+  </TabItem>
 </Tabs>
-
----
 
 One excellent starter on the Apple keyboard is to map `⇪` (`caps_lock`) to `Hyper`
 (`⌘⌥⌃⇧`) modifier when press-and-hold (and still work as `⇪` when tap):
