@@ -106,5 +106,5 @@ and use the same shortcuts for common actions in other apps, like browsers, too:
 [Karabiner-Elements](https://karabiner-elements.pqrs.org/) to the rescue.
 It can do all of that and [a lot more](https://github.com/evan-liu/karabiner-config/blob/main/karabiner-config.ts).
 
-Together with [some other tools](mac/homebrew/),
+Together with [some other tools](/productivity/mac/homebrew/),
 I continue the journey to be a more ~~lazy~~ productive Mac user.
