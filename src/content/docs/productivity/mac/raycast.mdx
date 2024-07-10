@@ -17,13 +17,13 @@ import BrewfileCask from '@components/BrewfileCask.astro'
 import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Brew install">
+  <TabItem label="brew install" icon="homebrew">
     <BrewInstallCask name="raycast" />
   </TabItem>
-  <TabItem label="Brewfile">
+  <TabItem label="brew bundle" icon="homebrew">
     <BrewfileCask name="raycast" />
   </TabItem>
-  <TabItem label="Download">
+  <TabItem label="Download" icon="right-arrow">
     <DownloadCard url="https://www.raycast.com/" />
   </TabItem>
 </Tabs>

@@ -11,23 +11,20 @@ hide menu bar items and only show them when needed.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
 import BrewfileMas from '@components/BrewfileMas.astro'
+import DownloadAppStore from '@components/DownloadAppStore.astro'
 
 <Tabs>
-  <TabItem label="App Store">
-    <a
-      href="https://apps.apple.com/app/hidden-bar/id1452453066"
-      target="_blank">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" />
-    </a>
+  <TabItem label="App Store" icon="apple">
+    <DownloadAppStore url="https://apps.apple.com/app/hidden-bar/id1452453066" />
   </TabItem>
-  <TabItem label="Brewfile">
+  <TabItem label="brew bundle" icon="homebrew">
     <BrewfileMas name="Hidden Bar" id={1452453066} />
   </TabItem>
 </Tabs>
 
 ---
 
-![img](https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/87/ef/ee/87efee47-0191-bf71-9710-0474d7671f03/pr_source.png/1286x0w.webp)
+![hidden-bar](./hidden-bar.webp)
 
 👨‍💻 I try to keep every UI minimal, with only information that I need, including OS UI like the menu bar.
 

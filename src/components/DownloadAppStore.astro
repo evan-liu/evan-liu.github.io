@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets'
+import img from '../assets/download-on-the-app-store.svg'
+
+interface Props {
+  url: string
+}
+
+let { url } = Astro.props
+---
+
+<a href={url} target="_blank">
+  <Image src={img} alt="Download on the AppStore" />
+</a>

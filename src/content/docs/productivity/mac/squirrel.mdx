@@ -14,13 +14,13 @@ import BrewfileCask from '@components/BrewfileCask.astro'
 import DownloadCard from '@components/DownloadCard.astro'
 
 <Tabs>
-  <TabItem label="Brew install">
+  <TabItem label="brew install" icon="homebrew">
     <BrewInstallCask name="squirrel" />
   </TabItem>
-  <TabItem label="Brewfile">
+  <TabItem label="brew bundle" icon="homebrew">
     <BrewfileCask name="squirrel" />
   </TabItem>
-  <TabItem label="Download">
+  <TabItem label="Download" icon="right-arrow">
     <DownloadCard url="https://rime.im/download/" />
   </TabItem>
 

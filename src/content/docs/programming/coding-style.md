@@ -51,14 +51,15 @@ There is one thing that I do differently:
 I find `camelCase` easier to read when the acronym isn't the last word,
 particularly when one acronym follows another.
 
-## JavaScript / TypeScript {#javascript-typescript}
+## JavaScript / TypeScript
 
 ### Prettier
 
 Configurations I prefer over the defaults:
 
 ```javascript title="prettier.config.js"
-module.exports = {
+/** @type {import('prettier').Config} */
+export default {
   singleQuote: true,
   semi: false,
   bracketSameLine: true,
@@ -85,7 +86,7 @@ but sometimes add noises:
 
 So I now use `let` by default and only use `const` for true "constants".
 
-### == v.s. === {#eqeqeq}
+### == v.s. ===
 
 Another rule I used to follow until read the book
 [You Don't Know JS Yet](https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed)
