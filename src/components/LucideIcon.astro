@@ -1,0 +1,37 @@
+---
+import { Download } from 'lucide'
+
+let icons = {
+  //
+  Download,
+}
+
+interface Props {
+  icon: keyof typeof icons
+  size?: number | string
+  color?: string
+}
+
+let { icon, size = '1rem', color } = Astro.props
+if (!(icon in icons)) {
+  throw new Error(`${icon} not in: ${Object.keys(icons).join(', ')}`)
+}
+
+let [, attributesData, childrenData = []] = icons[icon]
+
+let attributes = {
+  ...attributesData,
+  ...{ width: size, height: size },
+  ...(color ? { stroke: color } : null),
+}
+let childrenHtml = childrenData
+  .map(
+    ([tag, attr]) =>
+      `<${tag} ${Object.entries(attr)
+        .map(([k, v]) => `${k}="${v}"`)
+        .join(' ')} />`,
+  )
+  .join('\n')
+---
+
+<svg {...attributes} set:html={childrenHtml} />
