@@ -6,11 +6,6 @@ sidebar:
 tableOfContents: false
 ---
 
-[Karabiner-Elements](https://karabiner-elements.pqrs.org/) is a very powerful
-keyboard customizer, however, the JSON config format is hard to use for complex mappings.
-So I created a tool, [karabiner.ts](https://github.com/evan-liu/karabiner.ts),
-to write the config in TypeScript with strong-typing and abstracted features.
-
 import {
   TabItem,
   Tabs,
@@ -21,6 +16,14 @@ import {
 import BrewInstallCask from '@components/BrewInstallCask.astro'
 import BrewfileCask from '@components/BrewfileCask.astro'
 import DownloadCard from '@components/DownloadCard.astro'
+import Link from '@components/Link.astro'
+
+export const components = { a: Link }
+
+[Karabiner-Elements](https://karabiner-elements.pqrs.org/) is a very powerful
+keyboard customizer, however, the JSON config format is hard to use for complex mappings.
+So I created a tool, [karabiner.ts](https://github.com/evan-liu/karabiner.ts),
+to write the config in TypeScript with strong-typing and abstracted features.
 
 <Tabs>
   <TabItem label="brew install" icon="homebrew">
@@ -29,7 +32,7 @@ import DownloadCard from '@components/DownloadCard.astro'
   <TabItem label="brew bundle" icon="homebrew">
     <BrewfileCask name="karabiner-elements" />
   </TabItem>
-  <TabItem label="Download" icon="right-arrow">
+  <TabItem label="Download" icon="down-caret">
     <DownloadCard url="https://karabiner-elements.pqrs.org/" />
   </TabItem>
 </Tabs>

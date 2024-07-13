@@ -1,0 +1,14 @@
+---
+import { Icon } from '@astrojs/starlight/components'
+import { cn } from '../lib/utils'
+
+let props = Astro.props
+
+let external = props.href.startsWith('http')
+let target = external ? '_blank' : props.target
+---
+
+<a target={target} {...props} class={cn(props.class, 'inline-flex')}>
+  <slot />
+  <Icon name={external ? 'external' : 'right-arrow'} />
+</a>

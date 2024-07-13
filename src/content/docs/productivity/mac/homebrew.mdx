@@ -6,6 +6,10 @@ sidebar:
 tableOfContents: false
 ---
 
+import Link from '@components/Link.astro'
+
+export const components = { a: Link }
+
 [Homebrew](https://brew.sh/) is not only useful for installing packages and apps. When I need to reset, or set up a new Mac, I first clone my backup repo and run:
 
 ```bash title="bootstrap.sh"

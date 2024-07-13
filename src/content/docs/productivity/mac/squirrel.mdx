@@ -6,6 +6,10 @@ sidebar:
 tableOfContents: false
 ---
 
+import Link from '@components/Link.astro'
+
+export const components = { a: Link }
+
 [Squirrel](https://github.com/rime/squirrel) (鼠鬚管, [Rime](https://rime.im/) for macOS) is a Chinese input source.
 
 import { Tabs, TabItem } from '@astrojs/starlight/components'
@@ -20,7 +24,7 @@ import DownloadCard from '@components/DownloadCard.astro'
   <TabItem label="brew bundle" icon="homebrew">
     <BrewfileCask name="squirrel" />
   </TabItem>
-  <TabItem label="Download" icon="right-arrow">
+  <TabItem label="Download" icon="down-caret">
     <DownloadCard url="https://rime.im/download/" />
   </TabItem>
 
