@@ -13,18 +13,9 @@ let { url } = Astro.props
   href={url}
   target="_blank"
   class={cn(
-    'relative flex rounded-lg border p-4 no-underline border-sl-gray-5',
-    'hover:border-sl-gray-2',
+    'flex rounded-lg border p-4 no-underline shadow-sl-sm border-sl-gray-5',
+    'hover:border-sl-gray-2 hover:bg-sl-gray-7',
   )}>
   <span class="flex-1">{url}</span>
   <LucideIcon icon="Download" size={20} />
 </a>
-
-<style>
-  a {
-    box-shadow: var(--sl-shadow-sm);
-  }
-  a:hover {
-    background: var(--sl-color-gray-7, var(--sl-color-gray-6));
-  }
-</style>
