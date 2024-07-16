@@ -22,6 +22,9 @@ export default {
         'sl-accent-low': 'var(--sl-color-accent-low)',
         'sl-accent': 'var(--sl-color-accent)',
         'sl-accent-high': 'var(--sl-color-accent-high)',
+        'sl-bg': 'var(--sl-color-bg)',
+        'sl-text': 'var(--sl-color-text)',
+        'sl-text-accent': 'var(--sl-color-text-accent)',
       },
       boxShadow: {
         'sl-sm': 'var(--sl-shadow-sm)',

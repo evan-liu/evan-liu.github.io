@@ -1,0 +1,32 @@
+---
+let list = [
+  { left: 'Individuals and interactions', right: 'processes and tools' },
+  { left: 'Working software', right: 'comprehensive documentation' },
+  { left: 'Customer collaboration', right: 'contract negotiation' },
+  { left: 'Responding to change', right: 'following a plan' },
+]
+---
+
+<div>
+  We are uncovering better ways of developing software by doing it and helping
+  others do it. Through this work we have come to value:
+</div>
+
+<div class="inline-grid grid-cols-[1fr_auto_1fr] items-baseline">
+  {
+    list.map(({ left, right }) => (
+      <>
+        <span class="text-lg text-green-600 font-semibold text-right">
+          {left}
+        </span>
+        <span class="mx-2 text-sm font-light">over</span>
+        <span>{right}</span>
+      </>
+    ))
+  }
+</div>
+
+<div>
+  That is, while there is value in the items on the right, we value the items
+  <span class="text-lg text-green-600 font-semibold">on the left</span> more.
+</div>

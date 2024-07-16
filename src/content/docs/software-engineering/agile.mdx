@@ -1,0 +1,38 @@
+---
+title: 📚 Agile
+---
+
+import AgileManifesto from '@components/agile/AgileManifesto.astro'
+import AgilePrinciples from '@components/agile/AgilePrinciples.astro'
+import AgileTimeline from '@components/agile/AgileTimeline.mdx'
+
+import Link from '@components/Link.astro'
+
+export const components = { a: Link }
+
+> **Agile software development** is an umbrella term for a set of frameworks
+> and practices based on the values and principles expressed in the
+> [Manifesto for Agile Software Development](https://agilemanifesto.org/) and
+> the [12 Principles](https://agilemanifesto.org/principles.html) behind it.
+> -- [Agile Alliance](https://www.agilealliance.org/agile101/)
+
+## Manifesto
+
+<details open>
+  <summary>Manifesto for Agile Software Development</summary>
+  <AgileManifesto />
+</details>
+
+## Principles
+
+<details>
+  <summary>Principles behind the Agile Manifesto</summary>
+  <AgilePrinciples />
+</details>
+
+## Timeline
+
+<details>
+  <summary>Agile Practices Timeline</summary>
+  <AgileTimeline />
+</details>
