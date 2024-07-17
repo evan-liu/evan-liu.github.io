@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { Icon } from '@astrojs/starlight/components'
+import { cn } from '@lib/utils'
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'title'> {
+  title: string
+  description?: string
+}
+
+let { title, description, href, ...attributes } = Astro.props
+let isGitHub = typeof href == 'string' && href.startsWith('https://github.com/')
+---
+
+<div
+  class={cn(
+    'grid grid-cols-[1fr_auto] gap-2 relative p-4 group',
+    'border border-sl-gray-5 rounded-lg shadow-sl-sm',
+    'hover:bg-sl-gray-7 hover:border-sl-gray-2',
+  )}>
+  <span class="flex flex-col gap-2">
+    <a
+      {...attributes}
+      href={href}
+      target="_blank"
+      class="no-underline leading-tight">
+      <span class="absolute inset-0"></span>
+      <span class="text-sl-white font-semibold text-lg" set:html={title} />
+      {
+        description && (
+          <span class="text-sl-gray-3 leading-normal" set:html={description} />
+        )
+      }
+    </a>
+  </span>
+
+  <Icon
+    name={isGitHub ? 'github' : 'external'}
+    size="1.333em"
+    class="text-sl-gray-3 group-hover:text-sl-white"
+  />
+</div>

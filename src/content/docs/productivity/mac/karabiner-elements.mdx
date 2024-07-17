@@ -6,18 +6,13 @@ sidebar:
 tableOfContents: false
 ---
 
-import {
-  TabItem,
-  Tabs,
-  Code,
-  LinkCard,
-  CardGrid,
-} from '@astrojs/starlight/components'
+import { CardGrid, Code, TabItem, Tabs } from '@astrojs/starlight/components'
 import BrewInstallCask from '@components/BrewInstallCask.astro'
 import BrewfileCask from '@components/BrewfileCask.astro'
+import ExternalLinkCard from '@components/ExternalLinkCard.astro'
 import DownloadCard from '@components/DownloadCard.astro'
-import Link from '@components/Link.astro'
 
+import Link from '@components/Link.astro'
 export const components = { a: Link }
 
 [Karabiner-Elements](https://karabiner-elements.pqrs.org/) is a very powerful
@@ -81,12 +76,12 @@ and held, allow every other key on the keyboard to do something like:
 - Run **anything** on the computer
 
 <CardGrid>
-  <LinkCard
+  <ExternalLinkCard
     href="https://github.com/evan-liu/karabiner-config/blob/main/karabiner-config.ts"
     title="👨‍💻 My config"
     target="_blank"
   />
-  <LinkCard
+  <ExternalLinkCard
     href="https://github.com/evan-liu/karabiner.ts"
     title="🛠️ karabiner.ts"
     target="_blank"
