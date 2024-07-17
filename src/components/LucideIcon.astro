@@ -1,18 +1,19 @@
 ---
-import { Download } from 'lucide'
+import type { HTMLAttributes } from 'astro/types'
+import { Calendar, Download } from 'lucide'
 
 let icons = {
-  //
+  Calendar,
   Download,
 }
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<'svg'>, 'width' | 'height'> {
   icon: keyof typeof icons
   size?: number | string
   color?: string
 }
 
-let { icon, size = '1rem', color } = Astro.props
+let { icon, size = '1rem', color, ...rest } = Astro.props
 if (!(icon in icons)) {
   throw new Error(`${icon} not in: ${Object.keys(icons).join(', ')}`)
 }
@@ -20,6 +21,7 @@ if (!(icon in icons)) {
 let [, attributesData, childrenData = []] = icons[icon]
 
 let attributes = {
+  ...rest,
   ...attributesData,
   ...{ width: size, height: size },
   ...(color ? { stroke: color } : null),

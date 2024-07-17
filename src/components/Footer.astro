@@ -2,10 +2,11 @@
 import Default from '@astrojs/starlight/components/Footer.astro'
 
 let isHomepage = Astro.props.slug == ''
+let giscus = import.meta.env.PROD && !isHomepage
 ---
 
 {
-  !isHomepage && (
+  giscus && (
     <script
       src="https://giscus.app/client.js"
       data-theme="preferred_color_scheme"

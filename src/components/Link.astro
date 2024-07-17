@@ -4,7 +4,8 @@ import { cn } from '../lib/utils'
 
 let props = Astro.props
 
-let external = props.href.startsWith('http')
+let external =
+  props.href.startsWith('http') && !props.href.startsWith(import.meta.env.SITE)
 let target = external ? '_blank' : props.target
 ---
 
