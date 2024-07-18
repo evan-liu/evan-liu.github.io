@@ -1,5 +1,5 @@
 ---
-import { cn } from '@lib/utils'
+import OnLineMarker from '../OnLineMarker.astro'
 
 let principles = [
   'Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.',
@@ -20,13 +20,7 @@ let principles = [
 {
   principles.map((p, i) => (
     <div class="relative ml-4">
-      <span
-        class={cn(
-          'absolute ml-[-50px] mt-[-4px] w-9 h-9 flex items-center justify-center',
-          'bg-sl-gray-5 border-4 border-sl-bg rounded-full',
-        )}>
-        {i + 1}
-      </span>
+      <OnLineMarker>{i + 1}</OnLineMarker>
 
       <span>{p}</span>
     </div>

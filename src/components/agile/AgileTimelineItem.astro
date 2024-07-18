@@ -1,6 +1,6 @@
 ---
-import { cn } from '@lib/utils'
 import LucideIcon from '../LucideIcon.astro'
+import OnLineMarker from '../OnLineMarker.astro'
 
 interface Props {
   time: string
@@ -9,13 +9,9 @@ interface Props {
 ---
 
 <div class="relative flex gap-4 items-baseline ml-4">
-  <span
-    class={cn(
-      'absolute ml-[-50px] mt-[-2px] w-9 h-9 flex items-center justify-center',
-      'bg-sl-gray-5 border-4 border-sl-bg rounded-full',
-    )}>
+  <OnLineMarker class="mt-[-2px]">
     <LucideIcon icon="Calendar" class="text-sl-gray-3" />
-  </span>
+  </OnLineMarker>
 
   <span>{Astro.props.time}</span>
   <span class="text-xl font-semibold">{Astro.props.title}</span>

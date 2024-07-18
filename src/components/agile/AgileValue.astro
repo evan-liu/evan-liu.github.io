@@ -7,7 +7,7 @@ interface Props extends HTMLAttributes<'span'> {
   side?: 'left' | 'right'
   label?: string
 }
-let { index = 0, side = 'left', label, ...attr } = Astro.props
+let { index = 0, side = 'left', label, class: className, ...attr } = Astro.props
 
 let list = [
   { left: 'Individuals and interactions', right: 'processes and tools' },
@@ -23,7 +23,7 @@ let list = [
     side == 'left'
       ? 'text-lg text-green-600 font-semibold text-right'
       : 'italic font-light',
-    attr.class,
+    className,
   )}
   set:text={label || list[index >= 0 && index < list.length ? index : 0][side]}
 />
