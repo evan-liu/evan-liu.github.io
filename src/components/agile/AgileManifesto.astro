@@ -1,10 +1,5 @@
 ---
-let list = [
-  { left: 'Individuals and interactions', right: 'processes and tools' },
-  { left: 'Working software', right: 'comprehensive documentation' },
-  { left: 'Customer collaboration', right: 'contract negotiation' },
-  { left: 'Responding to change', right: 'following a plan' },
-]
+import AgileValue from './AgileValue.astro'
 ---
 
 <div>
@@ -14,19 +9,18 @@ let list = [
 
 <div class="inline-grid grid-cols-[1fr_auto_1fr] items-baseline">
   {
-    list.map(({ left, right }) => (
+    new Array(4).fill('').map((_, i) => (
       <>
-        <span class="text-lg text-green-600 font-semibold text-right">
-          {left}
-        </span>
+        <AgileValue side="left" index={i} />
         <span class="mx-2 text-sm font-light">over</span>
-        <span>{right}</span>
+        <AgileValue side="right" index={i} />
       </>
     ))
   }
 </div>
 
 <div>
-  That is, while there is value in the items on the right, we value the items
-  <span class="text-lg text-green-600 font-semibold">on the left</span> more.
+  That is, while there is value in the items
+  <AgileValue side="right" label="on the right" />, we value the items
+  <AgileValue side="left" label="on the left" /> more.
 </div>
