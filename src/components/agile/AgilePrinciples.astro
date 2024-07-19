@@ -1,5 +1,5 @@
 ---
-import OnLineMarker from '../OnLineMarker.astro'
+import LineMarker from '../LineMarker.astro'
 
 let principles = [
   'Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.',
@@ -20,7 +20,7 @@ let principles = [
 {
   principles.map((p, i) => (
     <div class="relative ml-4">
-      <OnLineMarker>{i + 1}</OnLineMarker>
+      <LineMarker>{i + 1}</LineMarker>
 
       <span>{p}</span>
     </div>
