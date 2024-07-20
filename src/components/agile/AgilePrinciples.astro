@@ -1,4 +1,5 @@
 ---
+import { Icon } from '@astrojs/starlight/components'
 import LineMarker from '../LineMarker.astro'
 
 let principles = [
@@ -20,7 +21,9 @@ let principles = [
 {
   principles.map((p, i) => (
     <div class="ml-4">
-      <LineMarker>{i + 1}</LineMarker>
+      <LineMarker>
+        <Icon name="right-caret" />
+      </LineMarker>
 
       <span>{p}</span>
     </div>
