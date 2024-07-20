@@ -107,9 +107,7 @@ let authors: Array<{
         </LineMarker>
 
         {author.link ? (
-          <Link href={author.link} target="_blank">
-            {author.name}
-          </Link>
+          <Link href={author.link}>{author.name}</Link>
         ) : (
           <span>{author.name}</span>
         )}
@@ -123,7 +121,7 @@ let authors: Array<{
   <LineMarker class="mt-[-2px]">
     <Icon name="open-book" />
   </LineMarker>
-  <Link href="http://agilemanifesto.org/authors.html" target="_blank">
+  <Link href="http://agilemanifesto.org/authors.html">
     Learn more about the authors
   </Link>
 </div>
