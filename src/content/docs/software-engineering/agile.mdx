@@ -1,0 +1,147 @@
+---
+title: 📚 Agile
+---
+
+import AgileManifesto from '@components/agile/AgileManifesto.astro'
+import AgileValue from '@components/agile/AgileValue.astro'
+import AgileManifestoAuthors from '@components/agile/AgileManifestoAuthors.astro'
+import AgilePrinciples from '@components/agile/AgilePrinciples.astro'
+import AgileTimeline from '@components/agile/AgileTimeline.mdx'
+import XPPractices from '@components/agile/XPPractices.astro'
+
+import Link from '@components/Link.astro'
+
+export const components = { a: Link }
+
+> **Agile software development** is an umbrella term for a set of frameworks
+> and practices based on the values and principles expressed in the
+> [Manifesto for Agile Software Development](https://agilemanifesto.org/) and
+> the [12 Principles](https://agilemanifesto.org/principles.html) behind it.
+> -- [Agile Alliance](https://www.agilealliance.org/agile101/)
+
+## Manifesto
+
+<details open>
+  <summary>Manifesto for Agile Software Development</summary>
+  <AgileManifesto />
+</details>
+
+<details>
+  <summary>Authors of The Agile Manifesto</summary>
+  <AgileManifestoAuthors />
+</details>
+
+## Principles
+
+<details>
+  <summary>Principles behind The Agile Manifesto</summary>
+  <AgilePrinciples />
+</details>
+
+## Timeline
+
+<details>
+  <summary>Agile Practices Timeline</summary>
+  <AgileTimeline />
+</details>
+
+## Frameworks and Practices
+
+[The Agile Subway Map](https://www.agilealliance.org/agile101/subway-map-to-agile-practices/)
+from Agile Alliance is an excellent representation of major Agile frameworks
+and practices.
+
+[Extreme Programming (XP)](https://www.agilealliance.org/glossary/xp/)
+focuses on practices and was the dominant Agile method in the late '90s and
+early '00s.
+
+<details>
+  <summary>Extreme programming practices</summary>
+  <XPPractices />
+</details>
+
+[Scrum](https://www.agilealliance.org/glossary/scrum/) focuses on managing the
+flow of work and became dominant in the mid-'00s.
+
+## Adoption
+
+Agile rapidly gained popularity within just a few years,
+which brought some problems.
+Several authors of the Agile Manifesto wrote about their concerns and suggestions:
+
+- Martin Fowler: [Agile Imposition](https://martinfowler.com/bliki/AgileImposition.html) (2006)
+- Martin Fowler: [Flaccid Scrum](https://martinfowler.com/bliki/FlaccidScrum.html) (2009)
+- Dave Thomas: [Agile is Dead (Long Live Agility)](https://pragdave.me/thoughts/active/2014-03-04-time-to-kill-agile.html) (2014)
+- Ron Jeffries: [Developers Should Abandon Agile](https://ronjeffries.com/articles/018-01ff/abandon-1/) (2018)
+
+### Problems
+
+The common problems are:
+
+- Instead of the values and principles, only project management processes are applied.
+- These project management processes (normally Scrum) are imposed on the team.
+
+Which contradict the first value of Agile:
+
+<div>
+  <AgileValue side="left" />
+  <span class="mx-2 text-sm font-light">over</span>
+  <AgileValue side="right" />
+</div>
+
+And some of the principles:
+
+- Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.
+- The best architectures, requirements, and designs emerge from self-organizing teams.
+
+Another Agile Manifesto author, Robert C. Martin (Uncle Bob),
+also talked about this in
+[a recent interview](https://youtu.be/UBXXw2JSloo?si=WWCBqeSeb4IRC8zx&t=1604) (2024):
+
+The project managers flooded into Agile for "Certified ScrumMaster",
+took over "Agile" and pushed programmers out.
+"Agile" became a project management idea.
+
+### Suggestions
+
+The articles from the Agile Manifesto authors made similar suggestions:
+
+Firstly, "back to the values and principles".
+Agile is [People Oriented](https://martinfowler.com/bliki/PeopleOriented.html),
+teams should be "self-organizing", choose their own process and control how
+that process evolves.
+
+Secondly, apply strong technical practices.
+The XP practices make a good starting point.
+
+> "Scrum is just XP without the technical practices that make it work."
+
+> (XP is) "The Scrum That Actually Works".
+
+## 💭 My thoughts
+
+The problem Agile try to solve:
+
+Instead of failing in the end of a long painful waterfall process,
+how can a team keep delivering real value and respond to changes?
+
+The answer is "early and continuous delivery" of "Working software",
+with "Customer collaboration" and "Responding to change".
+
+For that we need "agility", via "Individuals and interactions" of an empowered,
+self-organizing team, and strong technical practices.
+
+> Continuous attention to technical excellence and good design enhances agility.
+
+However, after the project managers took over "Agile" via Scrum,
+engineering practices were omitted.
+
+DevOps movement seems to me like the software engineers then splintered from
+"Agile" and expanded some of the XP practices (e.g.
+["Continuous integration"](https://en.wikipedia.org/wiki/Extreme_programming_practices#Continuous_integration)
+and ["Small releases"](https://en.wikipedia.org/wiki/Extreme_programming_practices#Small_releases)).
+
+With modern DevOps and [Continuous Delivery](https://continuousdelivery.com/),
+iterations are so small that some Agile practices, like the XP
+[Planning Game](https://en.wikipedia.org/wiki/Extreme_programming_practices#Planning_game),
+may no longer be needed.

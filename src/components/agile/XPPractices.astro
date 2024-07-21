@@ -1,0 +1,100 @@
+---
+import { Icon } from '@astrojs/starlight/components'
+import { cn } from '@lib/utils'
+import LineMarker from '../LineMarker.astro'
+import Link from '../Link.astro'
+
+let list = [
+  {
+    area: 'Fine scale feedback',
+    items: [
+      {
+        name: 'Pair programming',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Pair_programming',
+      },
+      {
+        name: 'Planning game',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Planning_game',
+      },
+      {
+        name: 'Test driven development',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Test_driven_development',
+      },
+      {
+        name: 'Whole team',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Whole_team',
+      },
+    ],
+  },
+  {
+    area: 'Continuous process',
+    items: [
+      {
+        name: 'Continuous integration',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Continuous_integration',
+      },
+      {
+        name: 'Design improvement',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Design_improvement',
+      },
+      {
+        name: 'Small releases',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Small_releases',
+      },
+    ],
+  },
+  {
+    area: 'Shared understanding',
+    items: [
+      {
+        name: 'Coding standard',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Coding_standard',
+      },
+      {
+        name: 'Collective code ownership',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Collective_code_ownership',
+      },
+      {
+        name: 'Simple design',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Simple_design',
+      },
+      {
+        name: 'System metaphor',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#System_metaphor',
+      },
+    ],
+  },
+  {
+    area: 'Programmer welfare',
+    items: [
+      {
+        name: 'Sustainable pace',
+        link: 'https://en.wikipedia.org/wiki/Extreme_programming_practices#Sustainable_pace',
+      },
+    ],
+  },
+]
+---
+
+<div class="ml-4">
+  Extreme programming has 12 practices, grouped into four areas:
+</div>
+
+<div class="inline-grid grid-cols-2 gap-x-8 pl-4">
+  {
+    list.map(({ area, items }, i) => (
+      <>
+        <div class={cn('col-span-2 text-lg font-bold', i > 0 && 'mt-6')}>
+          <LineMarker>
+            <Icon name="down-caret" />
+          </LineMarker>
+          {area}
+        </div>
+
+        {items.map(({ name, link }) => (
+          <Link href={link}>{name}</Link>
+        ))}
+      </>
+    ))
+  }
+</div>

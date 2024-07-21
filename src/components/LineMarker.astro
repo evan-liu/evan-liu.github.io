@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cn } from '@lib/utils'
+
+interface Props extends HTMLAttributes<'span'> {}
+
+let { class: className, ...attr } = Astro.props
+---
+
+<span
+  {...attr}
+  class={cn(
+    'absolute ml-[-50px] mt-[-4px] w-9 h-9 flex items-center justify-center',
+    'bg-sl-gray-5 border-4 border-sl-bg rounded-full text-sl-gray-3',
+    className,
+  )}><slot /></span
+>

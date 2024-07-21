@@ -1,0 +1,201 @@
+import AgileTimelineItem from './AgileTimelineItem.astro'
+import Link from '../Link.astro'
+
+export const components = { a: Link }
+
+<div class="mb-4 ml-4">
+  based on [the timeline from Agile
+  Alliance](https://www.agilealliance.org/agile101/practices-timeline/) with
+  fewer items:
+</div>
+
+<AgileTimelineItem time="1970s" title="Wideband Delphi">
+  Barry Boehm proposes “Wideband Delphi”, a forerunner of **Planning Poker**.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1976" title="Automated Unit Testing">
+  [A series of articles](https://dl.acm.org/doi/10.5555/800253.807721) by D.
+  Panzl describing tools with features closely resembling those of JUnit attest
+  to the long history of automated unit testing.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1977" title="Automating Software Builds">
+  Creation of the “make” tool for Unix systems – the principle of automating
+  software builds is not a new idea.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1980" title="Visual Control">
+  The notion of “visual control” originating in the Toyota Production System is
+  an anticipation of **“information radiators”**.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1984" title="Knowledge-based communication processes">
+  While criticisms of the **“waterfall”** sequential approach have started much
+  earlier, formulations of alternative incremental approaches are becoming more
+  pointed; a good example is an early paper on [”Knowledge-based communication
+  processes in software
+  engineering”](https://dl.acm.org/doi/10.5555/800054.801993) advocating
+  incremental development for the specific reason that “complete and stable
+  specifications are not available”.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1985" title="Evolutionary Delivery Model">
+  Perhaps the first explicitly named, incremental alternative to the
+  **“waterfall”** approach is Tom Gilb’s [Evolutionary Delivery
+  Model](https://dl.acm.org/doi/10.1145/1012483.1012490), nicknamed “Evo”.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1986" title="Scrum Framework Inspiration">
+  Takeuchi and Nonaka publish their article [”The New New Product Development
+  Game”](https://hbr.org/1986/01/the-new-new-product-development-game) in
+  Harvard Business Review. The article describes a rugby approach where “the
+  product development process emerges from the constant interaction of a
+  hand-picked, multidisciplinary team whose members work together from start to
+  finish.” This article is often cited as the inspiration for the **Scrum**
+  framework.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1988" title="Rapid Iterative Production Prototyping">
+  The **“timebox”** is described as a cornerstone of Scott Schultz’s “Rapid
+  Iterative Production Prototyping” approach in use at a Du Pont spin-off,
+  Information Engineering Associates.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1990" title="Refactoring">
+  Bill Opdyke coins the term “refactoring” in an ACM SIGPLAN paper with Ralph
+  Johnson, “Refactoring: An aid in designing application frameworks and evolving
+  object-oriented systems”
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1991" title="Rapid Application Development">
+  RAD, possibly the first approach in which **timeboxing** and **“iterations”**
+  in the looser sense of “one repetition of the entire software development
+  process” are closely combined, is described by James Martin in his [”Rapid
+  Application Development”](https://www.amazon.com/dp/0023767758). This book
+  also describes the details of the timebox in one of its chapters.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1992" title="Dynamic Duo Coding">
+  “Dynamic Duo” is the term coined by Larry Constantine, reporting on a visit to
+  Whitesmiths Inc., a compiler vendor started by P.J. Plauger, one of the
+  implementors of C: “At each terminal were two programmers! Of course, only one
+  programmer was actually cutting code at each keyboard, but the others were
+  peering over their shoulders.” Whitesmiths existed from 1978 to 1988.
+</AgileTimelineItem>
+
+<AgileTimelineItem
+  time="1993"
+  title="The Benefits Of Collaboration For Student Programmers">
+  “The benefits of collaboration for student programmers” by Wilson et al. is
+  one early empirical study indicating benefits of pairing for programming tasks
+  specifically. Posterior studies are more abundant and driven by the desire to
+  “validate” **pair programming** after it had already gained popularity through
+  Extreme Programming.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1993" title="Stand-Up Meeting Pattern">
+  Jim Coplien writes the original **Stand-Up Meeting** pattern.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1993" title="Continuous Integration">
+  The phrase **“continuous integration”** is already in use and thus predates
+  what will later be known as Agile processes, for instance an article written
+  this year contrasts it with “scheduled” integration, and recommends the
+  latter, citing “lack of thorough testing” as one issue with continuous
+  integration; this helps explain why the automated testing favored by Agile
+  teams is an enabler for continuous integration.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1993" title="Invention Of Scrum">
+  Jeff Sutherland invents Scrum as a process at Easel Corporation.
+</AgileTimelineItem>
+
+<AgileTimelineItem
+  time="1995"
+  title="Growth Of Human Factors In Application Development">
+  An article by Alistair Cockburn, ”Growth of human factors in application
+  development”, suggests one major reason why iterative approaches gradually
+  gain acceptance: the bottleneck in software development is shifting to
+  (individual and organizational) learning, and human learning is intrinsically
+  an iterative, trial and error process.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1995" title="Sprint As Iteration">
+  The earliest writings on Scrum introduce the notion of the “sprint” as
+  iteration, although its duration is variable.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1995" title="Formal Introduction Of Scrum">
+  Ken Schwaber and Jeff Sutherland co-present Scrum at the OOPSLA Conference.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1996" title="Daily Build And Smoke Test">
+  Steve McConnell describes the [“Daily Build and Smoke
+  Test”](https://stevemcconnell.com/articles/daily-build-and-smoke-test/)
+  technique, used at Microsoft for Windows NT 3.0 during the 1990’s; the
+  emphasis is not so much on the automation as on the frequency, the daily cycle
+  being at that time considered “extreme”.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1996" title="Acceptance Testing">
+  Automated tests are a practice of Extreme Programming, without much emphasis
+  on the distinction between unit and acceptance testing, and with no particular
+  notation or tool recommended.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1997" title="Daily Scrum">
+  Ken Schwaber describes the **“daily scrum”** (which does not appear in his
+  earlier writings, such as the 1995 article “SCRUM Development Process”), this
+  is later recast in pattern form [by Mike
+  Beedle](http://www.jeffsutherland.org/objwld98/scrum_pattern.html).
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1998" title="Extreme Programming">
+  The earliest article about Extreme Programming, “Chrysler goes to Extremes”,
+  describes several XP practices such as self-chosen tasks, test first, three
+  week iterations, collective code ownership, and pair programming.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1999" title="System Metaphor">
+  Early on in the elaboration of Extreme Programming, the “System Metaphor”
+  practice is proposed to address the issues of business-technical translation
+  and cognitive friction, however the practice is poorly understood and fails to
+  catch on.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1999" title="Iterative And Incremental">
+  In an article for the C++ Report, Robert C. Martin gives what is perhaps the
+  earliest description of the Agile sense of the terms **“iterative”** and
+  **“incremental”**.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="1999" title="Refactoring Popularized">
+  The practice of **“refactoring”**, incorporated a few years earlier into
+  Extreme Programming, is popularized by [Martin Fowler’s
+  book](https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/)
+  of the same name.
+</AgileTimelineItem>
+
+<AgileTimelineItem time="2001" title="Agile Manifesto authored">
+  Bob Martin called a "Lightweight Process Summit" to create a manifesto that
+  outlined similarities between all the various lightweight processes. The 17
+  attendees decided to use the term **"agile"** and wrote the "Manifesto for
+  Agile Software Development". Some of the authors wrote up their recollections
+  of writing the Agile Manifesto: [Bob
+  Martin](https://sites.google.com/site/unclebobconsultingllc/the-founding-of-the-agile-alliance),
+  [Martin Fowler](https://martinfowler.com/articles/agileStory.html), [Dave
+  Thomas](https://pragdave.me/thoughts/active/2007-02-24-some-agile-history.html),
+  [Jim Highsmith](https://agilemanifesto.org/history.html).
+</AgileTimelineItem>
+
+<AgileTimelineItem time="2009" title="Srumban">
+  Corey Ladas suggested that Kanban could improve upon Scrum and suggested
+  Scrumban as the transition from Scrum to Kanban in his book [Scrumban – Essays
+  on Kanban Systems for Lean Software Development](http://amzn.to/2n8OsPq).
+</AgileTimelineItem>
+
+<AgileTimelineItem time="2010" title="Kanban">
+  David J. Anderson publishes [Kanban: Successful Evolutionary Change for Your
+  Technology Business](http://amzn.to/2oAvtNx) as the first description of the
+  method.
+</AgileTimelineItem>

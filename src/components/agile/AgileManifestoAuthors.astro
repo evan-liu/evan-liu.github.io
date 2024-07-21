@@ -1,0 +1,127 @@
+---
+import { Icon } from '@astrojs/starlight/components'
+import LineMarker from '../LineMarker.astro'
+import Link from '../Link.astro'
+import LucideIcon from '../LucideIcon.astro'
+
+let authors: Array<{
+  name: string
+  link?: string
+  method?: string
+}> = [
+  {
+    name: 'Kent Beck',
+    link: 'https://www.kentbeck.com/',
+    method: 'Extreme Programming (XP)',
+  },
+  {
+    name: 'Mike Beedle',
+    link: 'https://wiki.c2.com/?MikeBeedle',
+    method: 'Scrum',
+  },
+  {
+    name: 'Arie van Bennekum',
+    link: 'https://arievanbennekum.com/',
+    method: 'DSDM',
+  },
+  {
+    name: 'Alistair Cockburn',
+    link: 'http://alistair.cockburn.us/',
+    method: 'Crystal',
+  },
+  {
+    name: 'Ward Cunningham',
+    link: 'https://wiki.c2.com/?WardCunningham',
+    method: 'Extreme Programming (XP)',
+  },
+  {
+    name: 'Martin Fowler',
+    link: 'https://www.martinfowler.com/',
+    method: 'Extreme Programming (XP)',
+  },
+  {
+    name: 'James Grenning',
+    link: 'https://wingman-sw.com/',
+    method: 'Extreme Programming (XP)',
+  },
+  {
+    name: 'Jim Highsmith',
+    link: 'https://jimhighsmith.com/',
+    method: 'Adaptive Software Development (ASD)',
+  },
+  {
+    name: 'Andrew Hunt',
+    link: 'https://toolshed.com/',
+    method: 'The Pragmatic Programmer (PragProg)',
+  },
+  {
+    name: 'Ron Jeffries',
+    link: 'https://ronjeffries.com/',
+    method: 'Extreme Programming (XP)',
+  },
+  {
+    name: 'Jon Kern',
+    link: 'https://technicaldebt.com/',
+    method: 'Feature-Driven Development (FDD)',
+  },
+  { name: 'Brian Marick', link: 'http://www.exampler.com/about/' },
+  {
+    name: 'Robert C. Martin',
+    link: 'http://cleancoder.com/',
+    method: 'Extreme Programming (XP)',
+  },
+  {
+    name: 'Steve Mellor',
+    link: 'https://en.wikipedia.org/wiki/Stephen_J._Mellor',
+  },
+  {
+    name: 'Ken Schwaber',
+    link: 'https://kenschwaber.wordpress.com/',
+    method: 'Scrum',
+  },
+  {
+    name: 'Jeff Sutherland',
+    link: 'https://jeffsutherland.com/',
+    method: 'Scrum',
+  },
+  {
+    name: 'Dave Thomas',
+    link: 'https://pragdave.me/',
+    method: 'The Pragmatic Programmer (PragProg)',
+  },
+]
+---
+
+<div class="mb-4 ml-4">
+  from communities of various
+  <span class="font-semibold">"Lightweight Methods"</span>
+  (re-named to <span class="font-semibold">"Agile"</span>):
+</div>
+
+{
+  authors.map((author) => (
+    <>
+      <div class="flex ml-4">
+        <LineMarker>
+          <LucideIcon icon="UserPen" />
+        </LineMarker>
+
+        {author.link ? (
+          <Link href={author.link}>{author.name}</Link>
+        ) : (
+          <span>{author.name}</span>
+        )}
+        {author.method && <span>, {author.method}</span>}
+      </div>
+    </>
+  ))
+}
+
+<div class="ml-4 pt-2">
+  <LineMarker class="mt-[-2px]">
+    <Icon name="open-book" />
+  </LineMarker>
+  <Link href="http://agilemanifesto.org/authors.html">
+    Learn more about the authors
+  </Link>
+</div>

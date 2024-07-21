@@ -1,0 +1,26 @@
+---
+import AgileValue from './AgileValue.astro'
+---
+
+<div>
+  We are uncovering better ways of developing software by doing it and helping
+  others do it. Through this work we have come to value:
+</div>
+
+<div class="inline-grid grid-cols-[1fr_auto_1fr] items-baseline">
+  {
+    new Array(4).fill('').map((_, i) => (
+      <>
+        <AgileValue side="left" index={i} />
+        <span class="mx-2 text-sm font-light">over</span>
+        <AgileValue side="right" index={i} />
+      </>
+    ))
+  }
+</div>
+
+<div>
+  That is, while there is value in the items
+  <AgileValue side="right" label="on the right" />, we value the items
+  <AgileValue side="left" label="on the left" /> more.
+</div>

@@ -1,0 +1,22 @@
+---
+import LucideIcon from '../LucideIcon.astro'
+import LineMarker from '../LineMarker.astro'
+
+interface Props {
+  time: string
+  title?: string
+}
+---
+
+<div class="flex gap-4 items-baseline ml-4">
+  <LineMarker class="mt-[-2px]">
+    <LucideIcon icon="Calendar" />
+  </LineMarker>
+
+  <span>{Astro.props.time}</span>
+  <span class="text-xl font-semibold">{Astro.props.title}</span>
+</div>
+
+<div class="ml-4">
+  <slot />
+</div>
