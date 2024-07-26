@@ -3,5 +3,5 @@ export default {
   singleQuote: true,
   semi: false,
   bracketSameLine: true,
-  plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-astro'],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
 }
