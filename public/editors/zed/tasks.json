@@ -1,0 +1,7 @@
+[
+  {
+    "label": "dotfiles:sync:down",
+    "cwd": "/Users/evan/Dev/Config/dotfiles",
+    "command": "node sync.mjs"
+  }
+]
