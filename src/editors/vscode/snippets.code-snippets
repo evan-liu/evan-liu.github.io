@@ -1,0 +1,14 @@
+{
+	"console.log()": {
+		"prefix": "clog",
+		"body": ["console.log($0)"],
+		"description": "console.log()",
+		"scope": "javascript,typescript",
+	},
+	"Arrow Function": {
+		"prefix": "afun",
+		"body": ["($1) => $0"],
+		"description": "Arrow Function () => {}",
+		"scope": "javascript,typescript",
+	}
+}

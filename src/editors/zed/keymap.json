@@ -71,6 +71,7 @@
       "space a t": "editor::ConvertToTitleCase",
       //
       "space f f": "file_finder::Toggle",
+      "space f j": "file_finder::Toggle",
       "space f a": "command_palette::Toggle",
       "space f p": "projects::OpenRecent",
       "space f t": "pane::DeploySearch",
@@ -127,8 +128,12 @@
   {
     "context": "Terminal",
     "bindings": {
-      "escape": "terminal_panel::ToggleFocus",
       "cmd-t": "workspace::NewTerminal"
+    }
+  },
+  {
+    "bindings": {
+      "cmd-escape": "workspace::CloseAllDocks"
     }
   }
 ]

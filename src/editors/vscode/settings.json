@@ -126,6 +126,7 @@
     { "before": ["<leader>", "z", "S"], "commands": ["workbench.action.openSettingsJson"] }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
+    { "before": ["y"], "after": ["\"", "+", "y"] }, // Yank to system clipboard
     { "before": ["<leader>", "w"], "commands": ["workbench.action.files.save"] },
     { "before": ["<leader>", "enter"], "commands": ["editor.action.quickFix"] }
   ],
@@ -144,9 +145,8 @@
   "prettier.bracketSameLine": true,
   "[jsonc]": { "prettier.printWidth": 120 },
 
-  "maptz.regionfolder": {},
-
   "git.autofetch": true,
+  "git.confirmSync": false,
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.showWelcomeOnInstall": false,
@@ -154,6 +154,12 @@
   "gitlens.plusFeatures.enabled": false,
   "gitlens.virtualRepositories.enabled": false,
   "gitlens.graph.minimap.enabled": false,
+  "gitlens.autolinks": [
+    {
+      "prefix": "T2KAN-",
+      "url": "https://leaderkit.atlassian.net/browse/T2KAN-<num>"
+    }
+  ],
 
   "window.commandCenter": false,
   "breadcrumbs.symbolPath": "off",
@@ -166,14 +172,10 @@
   "workbench.editor.editorActionsLocation": "hidden",
   "workbench.editor.showTabs": "none",
   "workbench.activityBar.location": "hidden",
-  "gitlens.autolinks": [
-    {
-      "prefix": "T2KAN-",
-      "url": "https://leaderkit.atlassian.net/browse/T2KAN-<num>"
-    }
-  ],
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
+  "explorer.confirmPasteNative": false,
+  "explorer.autoReveal": false,
   "editor.stickyScroll.enabled": false,
   "workbench.statusBar.visible": false
 }

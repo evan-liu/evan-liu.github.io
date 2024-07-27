@@ -1,17 +1,17 @@
 import { copyFile, mkdir, rm } from 'node:fs/promises'
 import { basename, dirname, join, resolve } from 'node:path'
 import { homedir } from 'node:os'
-import { execSync } from 'node:child_process'
 
 let osHome = homedir()
-let localRoot = resolve(dirname(new URL(import.meta.url).pathname), '..')
-let localPublicEditorsDir = join(localRoot, 'public/editors')
+let rootDir = resolve(dirname(new URL(import.meta.url).pathname), '..')
+let distDir = join(rootDir, 'src/editors')
 
 let files = {
   jetbrains: ['.ideavimrc'],
   vscode: [
     'Library/Application Support/Code/User/settings.json',
     'Library/Application Support/Code/User/keybindings.json',
+    'Library/Application Support/Code/User/snippets/snippets.code-snippets',
   ],
   zed: [
     '.config/zed/settings.json',
@@ -26,11 +26,11 @@ main().catch((err) => {
 })
 
 async function main() {
-  await rm(localPublicEditorsDir, { force: true, recursive: true })
-  await mkdir(localPublicEditorsDir)
+  await rm(distDir, { force: true, recursive: true })
+  await mkdir(distDir)
 
   for (let [editor, list] of Object.entries(files)) {
-    let dir = join(localPublicEditorsDir, editor)
+    let dir = join(distDir, editor)
     await mkdir(dir)
     for (let file of list) {
       let filePath = join(osHome, file)
