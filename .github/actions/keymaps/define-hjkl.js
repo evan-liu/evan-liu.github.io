@@ -27,7 +27,7 @@ export function defineHjkl() {
       ],
     },
     {
-      group: 'Go back/forward',
+      group: 'Go back/forward in history',
       keymap: [
         { key: '⌃h', desc: 'Go back', editors },
         { key: '⌃l', desc: 'Go forward', editors },
@@ -37,7 +37,7 @@ export function defineHjkl() {
       group: 'Find/Select word under cursor',
       keymap: [
         { key: '⌘j', desc: 'Find next word under cursor', editors },
-        { key: '⌘k', desc: 'Find previous work under cursor', editors },
+        { key: '⌘k', desc: 'Find previous word under cursor', editors },
       ],
     },
     {
