@@ -1,6 +1,10 @@
 name: Sync and built editor keymaps
 
 on:
+  push:
+    paths:
+      - '.github/actions/keymaps/*.js'
+      - 'src/content/docs/productivity/editor-keymaps.mdx'
   workflow_dispatch:
 
 jobs:
@@ -24,7 +28,7 @@ jobs:
             git config user.name "Evan Liu"
             git config user.email "evancoding@gmail.com"
             git add .
-            git commit -m "Sync editor keymaps"
+            git commit -m "💬 Sync editor keymaps"
             git push
           else
             echo "No changes";
