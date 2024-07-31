@@ -174,6 +174,7 @@ export function defineLeaderKeys() {
     {
       group: 'Source control',
       key: 's',
+      desc: '( <EditorName VSCode /> with [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) extention.)',
       keymap: [
         { key: '␣␣s', desc: 'Source control popup', editors: [] },
         { key: '␣sa', desc: 'Add', editors: [] },
