@@ -34,7 +34,7 @@ export function defineOtherKeys() {
       keymap: [
         { key: '⌃wr', desc: 'Move tab to right split', editors: [ws] },
         { key: '⌃wb', desc: 'Move tab to bottom split', editors: [ws] },
-        { key: '⌃wm', desc: 'Move tab opposite split', editors: [ws] },
+        { key: '⌃wm', desc: 'Move tab to opposite split', editors: [ws] },
         { key: '⌃wx', desc: 'Unsplit', editors: [ws] },
       ],
     },
