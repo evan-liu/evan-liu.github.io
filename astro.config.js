@@ -13,6 +13,7 @@ export default defineConfig({
           label: 'Productivity',
           items: [
             'productivity/lazy-developer',
+            'productivity/editor-keymaps',
             {
               label: '🛠️ Tools I use on Mac',
               collapsed: true,

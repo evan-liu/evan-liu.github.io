@@ -1,0 +1,12 @@
+---
+interface Props {
+  keys: string
+}
+
+let { keys } = Astro.props
+---
+
+<div
+  class="not-content flex gap-1 text-center text-lg font-bold text-sl-text-accent">
+  {keys.split('').map((v) => <span class="w-[1em]">{v}</span>)}
+</div>

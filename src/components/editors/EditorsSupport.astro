@@ -1,0 +1,25 @@
+---
+import EditorIcon from './EditorIcon.astro'
+
+interface Props {
+  editors: Array<'WebStorm' | 'VSCode' | 'Zed'>
+  all?: boolean
+  WebStorm?: boolean
+  VSCode?: boolean
+  Zed?: boolean
+}
+
+let { editors, all, ...enabled } = Astro.props
+
+if (all) {
+  enabled = { WebStorm: true, VSCode: true, Zed: true }
+} else {
+  editors?.forEach((v) => (enabled[v] = true))
+}
+---
+
+<div class="not-content flex gap-2 text-lg">
+  <EditorIcon WebStorm disabled={!enabled.WebStorm} />
+  <EditorIcon VSCode disabled={!enabled.VSCode} />
+  <EditorIcon Zed disabled={!enabled.Zed} />
+</div>

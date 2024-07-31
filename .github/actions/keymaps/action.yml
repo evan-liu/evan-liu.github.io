@@ -1,0 +1,6 @@
+name: Keymaps
+description: Sync and built editor keymaps
+
+runs:
+  using: node20
+  main: 'keymaps.js'

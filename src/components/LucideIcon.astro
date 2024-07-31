@@ -14,7 +14,7 @@ interface Props extends Omit<HTMLAttributes<'svg'>, 'width' | 'height'> {
   color?: string
 }
 
-let { icon, size = '1rem', color, ...rest } = Astro.props
+let { icon, size = '1em', color, ...rest } = Astro.props
 if (!(icon in icons)) {
   throw new Error(`${icon} not in: ${Object.keys(icons).join(', ')}`)
 }

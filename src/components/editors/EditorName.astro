@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cn } from '@lib/utils'
+import EditorIcon from './EditorIcon.astro'
+
+interface Props extends HTMLAttributes<'span'> {
+  editor?: 'WebStorm' | 'VSCode' | 'Zed'
+  WebStorm?: boolean
+  VSCode?: boolean
+  Zed?: boolean
+}
+
+let {
+  editor,
+  WebStorm,
+  VSCode,
+  Zed,
+
+  class: className,
+  ...rest
+} = Astro.props
+
+if (!editor) {
+  editor = Zed ? 'Zed' : VSCode ? 'VSCode' : 'WebStorm'
+}
+---
+
+<span
+  {...rest}
+  class={cn('not-content inline-flex items-baseline gap-1', className)}>
+  <EditorIcon editor={editor} class="translate-y-0.5" />
+  {editor}
+</span>
