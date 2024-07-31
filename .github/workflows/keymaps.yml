@@ -2,8 +2,6 @@ name: Sync and built editor keymaps
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types: [trigger-workflow]
 
 jobs:
   keymaps:
@@ -28,4 +26,6 @@ jobs:
             git add .
             git commit -m "Sync editor keymaps"
             git push
+          else
+            echo "No changes";
           fi
