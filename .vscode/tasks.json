@@ -12,6 +12,13 @@
       "type": "shell",
       "command": "node .github/actions/keymaps/keymaps.js",
       "problemMatcher": []
+    },
+    {
+      "label": "Pull dotfiles",
+      "type": "shell",
+      "command": "git pull",
+      "options": { "cwd": "dotfiles" },
+      "problemMatcher": []
     }
   ]
 }

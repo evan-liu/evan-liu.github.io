@@ -28,7 +28,7 @@ jobs:
             git config user.name "Evan Liu"
             git config user.email "evancoding@gmail.com"
             git add .
-            git commit -m "💬 Sync editor keymaps"
+            git commit -m "🔧 Sync editor keymaps"
             git push
           else
             echo "No changes";
