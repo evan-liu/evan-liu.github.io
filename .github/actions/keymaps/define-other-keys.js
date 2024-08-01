@@ -50,7 +50,7 @@ export function defineOtherKeys() {
         {
           key: '⌘⌥⌃e',
           desc: 'Add cursors to ends of selected lines',
-          editors: [ws],
+          editors: [ws, vs],
         },
         {
           key: '⌘⌥⌃f',
@@ -58,6 +58,11 @@ export function defineOtherKeys() {
           editors: all,
         },
         { key: '⌘⌥⌃g', desc: 'Add cursor to next occurrence', editors: all },
+        {
+          key: '⌘⌥⌃p',
+          desc: 'Add cursor to previous whole occurrence',
+          editors: [vs],
+        },
         { key: '⌘⌥⌃s', desc: 'Skip occurrence', editors: [ws] },
         { key: '⌘⌥⌃x', desc: 'Remove occurrence', editors: [ws] },
       ],

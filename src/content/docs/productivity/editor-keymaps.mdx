@@ -12,10 +12,10 @@ export const components = { a: Link }
 
 I organize keyboard shortcuts into 4 categories:
 
-1. `HJKL` with modifiers.
-1. Vim Leader keys.
-1. Vim features. e.g. `⌃w {key}` for window managment.
-1. Standard shurtcuts, e.g. `⌘+` for Zoom In.
+1. `HJKL` with `⌘⌥⌃⇧` modifiers.
+1. Vim Leader Key mappings.
+1. Vim commands. e.g. `⌃ + w` for window managment.
+1. Standard shortcuts, e.g., `⌘ + t` to create a new tab and `⌘ + w` to close one.
 
 Not only does it allow me to remember over 200 keyboard shortcuts,
 but it also lets me work (almost) the same way across editors:
@@ -49,14 +49,14 @@ such as browsers, [via Karabiner-Elements](https://github.com/evan-liu/karabiner
 :::tip[Home Row Modifiers]
 I use 2 keys on the home row (or below) for modifers
 [via Karabiner-Elements](https://github.com/evan-liu/karabiner-config/blob/fab052dc5e738c91adfae46aabeb17b38f4959fe/karabiner-config.ts#L507-L509),
-e.g. `f_s` (pressed and held at the same time) for `⌃`, so `f_s + h` for "Go back", all keys at home row.
+e.g. `s_f` (pressed and held at the same time) for `⌃`, so `s_f + h` for "Go back", all keys at home row.
 :::
 
 {/* Code below are generated from .github/actions/keymaps/keymaps.js */}
 
 ### Scroll up/down in file
 
-In Vim `⇧j` join lines. I remapped `⌃y` for it instead.
+In Vim `⇧ + j` join lines. I remapped `⌃ + y` for it instead.
 
 <div class="not-content grid grid-cols-[auto_1fr_auto] gap-x-5 border-t border-sl-gray-4">
   <div class="col-span-3 grid grid-cols-subgrid items-center border-b border-sl-gray-4 py-1">
@@ -73,7 +73,7 @@ In Vim `⇧j` join lines. I remapped `⌃y` for it instead.
 
 ### Move cursor up/down in window
 
-Via Vim. Also `⇧m` for moving cursor to the middle.
+Via Vim. Also `⇧ + m` for moving cursor to the middle.
 
 <div class="not-content grid grid-cols-[auto_1fr_auto] gap-x-5 border-t border-sl-gray-4">
   <div class="col-span-3 grid grid-cols-subgrid items-center border-b border-sl-gray-4 py-1">
@@ -266,8 +266,12 @@ Via Vim. Also `⇧m` for moving cursor to the middle.
 ### Add cursor below/above
 
 :::tip[Duo-Modifiers]
-I map `v_z` (pressed and held at the same time) to `⌘⌥⌃`
-[via Karabiner-Elements](https://github.com/evan-liu/karabiner-config/blob/fab052dc5e738c91adfae46aabeb17b38f4959fe/karabiner-config.ts#L522),
+I map `z_v` (pressed and held at the same time) to `⌘⌥⌃`
+[via Karabiner-Elements](https://github.com/evan-liu/karabiner-config/blob/fab052dc5e738c91adfae46aabeb17b38f4959fe/karabiner-config.ts#L522)
+:::
+
+:::tip[Multiple cursors]
+See below for more `⌘⌥⌃` keybings for [Multiple cursors](#multiple-cursors)
 :::
 
 <div class="not-content grid grid-cols-[auto_1fr_auto] gap-x-5 border-t border-sl-gray-4">
@@ -298,7 +302,7 @@ I map `v_z` (pressed and held at the same time) to `⌘⌥⌃`
   </div>
 </div>
 
-## Leader Keys
+## Leader Key Mappings
 
 I use `space` (`␣`) as leader key, and use each letter for a category, e.g. `f` for `Find`.
 
@@ -1276,7 +1280,7 @@ To use the Vim (leader) key bindings, it is crucial to focus back on the editor.
   <div class="col-span-3 grid grid-cols-subgrid items-center border-b border-sl-gray-4 py-1">
     <KeyBinding keys="⌘⌥⌃e" />
     <span class="flex-1">Add cursors to ends of selected lines</span>
-    <EditorsSupport WebStorm />
+    <EditorsSupport WebStorm VSCode />
   </div>
   <div class="col-span-3 grid grid-cols-subgrid items-center border-b border-sl-gray-4 py-1">
     <KeyBinding keys="⌘⌥⌃f" />
@@ -1287,6 +1291,11 @@ To use the Vim (leader) key bindings, it is crucial to focus back on the editor.
     <KeyBinding keys="⌘⌥⌃g" />
     <span class="flex-1">Add cursor to next occurrence</span>
     <EditorsSupport WebStorm VSCode Zed />
+  </div>
+  <div class="col-span-3 grid grid-cols-subgrid items-center border-b border-sl-gray-4 py-1">
+    <KeyBinding keys="⌘⌥⌃p" />
+    <span class="flex-1">Add cursor to previous whole occurrence</span>
+    <EditorsSupport VSCode />
   </div>
   <div class="col-span-3 grid grid-cols-subgrid items-center border-b border-sl-gray-4 py-1">
     <KeyBinding keys="⌘⌥⌃s" />
