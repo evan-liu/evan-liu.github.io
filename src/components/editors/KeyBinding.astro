@@ -1,0 +1,35 @@
+---
+import { cn } from '@lib/utils'
+
+interface Props {
+  keys: string
+}
+
+let { keys } = Astro.props
+
+let [modifiers, otherKeys] = [[], []] as [string[], string[]]
+keys
+  .split('')
+  .forEach((k) => ('⌘⌥⌃⇧'.includes(k) ? modifiers : otherKeys).push(k))
+let hasModifiers = modifiers.length > 0
+---
+
+<div
+  class={cn(
+    'flex items-center text-center text-lg font-bold text-sl-text-accent [&>span]:w-[1em]',
+    !hasModifiers && 'gap-1',
+  )}>
+  {modifiers.map((v) => <span>{v}</span>)}
+
+  {
+    hasModifiers && (
+      <span class="w-[1.2em] text-sm font-light opacity-80">+</span>
+    )
+  }
+
+  {
+    otherKeys.map((k, i) => (
+      <span class={cn(hasModifiers && i > 0 && 'ml-3')}>{k}</span>
+    ))
+  }
+</div>

@@ -97,8 +97,6 @@ export function defineLeaderKeys() {
         { key: '␣js', desc: 'Goto super method', editors: [] },
         { key: '␣jt', desc: 'Goto type declaration', editors: [] },
         { key: '␣jT', desc: 'Goto type declaration split', editors: [] },
-        { key: '␣jt', desc: 'Goto type definition', editors: [] },
-        { key: '␣jT', desc: 'Goto type definition split', editors: [] },
         { key: '␣ju', desc: 'Show usages in popup', editors: [] },
         { key: '␣jU', desc: 'Show usages in find panel', editors: [] },
       ],

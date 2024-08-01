@@ -100,6 +100,10 @@ export function defineHjkl() {
     },
     {
       group: 'Add cursor below/above',
+      desc: `:::tip[Duo-Modifiers]
+I map \`v_z\` (pressed and held at the same time) to \`⌘⌥⌃\`
+[via Karabiner-Elements](https://github.com/evan-liu/karabiner-config/blob/fab052dc5e738c91adfae46aabeb17b38f4959fe/karabiner-config.ts#L522),
+:::`,
       keymap: [
         { key: '⌘⌥⌃j', desc: 'Add cursor below', editors },
         { key: '⌘⌥⌃k', desc: 'Add cursor above', editors },

@@ -92,7 +92,7 @@ ${keymap
   .map(
     ({ key, desc, editors }) => `\
   <div class="col-span-3 grid grid-cols-subgrid items-center border-b border-sl-gray-4 py-1">
-    <BindingKeys keys="${key}" />
+    <KeyBinding keys="${key}" />
     <span class="flex-1">${desc}</span>
     <EditorsSupport${editors.length ? ` ${editors.join(' ')}` : ''} />
   </div>`,

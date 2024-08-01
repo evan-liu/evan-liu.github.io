@@ -41,8 +41,23 @@ export function defineOtherKeys() {
     {
       group: 'Multiple cursors',
       keymap: [
-        { key: '⌘⌥⌃a', desc: 'Add cursor to all occurrences', editors: [ws] },
-        { key: '⌘⌥⌃f', desc: 'Add cursor to next occurrence', editors: all },
+        {
+          key: '⌘⌥⌃a',
+          desc: 'Add cursors to all whole occurrences',
+          editors: [ws],
+        },
+        { key: '⌘⌥⌃b', desc: 'Add cursors to all occurrences', editors: [ws] },
+        {
+          key: '⌘⌥⌃e',
+          desc: 'Add cursors to ends of selected lines',
+          editors: [ws],
+        },
+        {
+          key: '⌘⌥⌃f',
+          desc: 'Add cursor to next whole occurrence',
+          editors: all,
+        },
+        { key: '⌘⌥⌃g', desc: 'Add cursor to next occurrence', editors: all },
         { key: '⌘⌥⌃s', desc: 'Skip occurrence', editors: [ws] },
         { key: '⌘⌥⌃x', desc: 'Remove occurrence', editors: [ws] },
       ],
