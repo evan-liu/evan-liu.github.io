@@ -23,7 +23,6 @@ export function defineLeaderKeys() {
       group: 'Code / Completion',
       key: 'c',
       keymap: [
-        { key: '␣␣c', desc: 'Code completion', editors: [] },
         { key: '␣ca', desc: 'Auto fix', editors: [] },
         { key: '␣cc', desc: 'Code completion', editors: [] },
         { key: '␣cC', desc: 'Smart type completion', editors: [] },
@@ -39,7 +38,6 @@ export function defineLeaderKeys() {
       group: 'Doc / Info / Peek',
       key: 'd',
       keymap: [
-        { key: '␣␣d', desc: 'Quick doc', editors: [] },
         { key: '␣dd', desc: 'Quick doc', editors: [] },
         { key: '␣de', desc: 'Show error description', editors: [] },
         { key: '␣dh', desc: 'Show hover info', editors: [] },
@@ -206,7 +204,6 @@ export function defineLeaderKeys() {
         { key: '␣vc', desc: 'Toggle breadcurmbs', editors: [] },
         { key: '␣vb', desc: 'Toggle tool buttons', editors: [] },
         { key: '␣vG', desc: 'Show gutter icons settings', editors: [] },
-        { key: '␣vh', desc: 'Hide editor', editors: [] },
         { key: '␣vi', desc: 'Toggle indent lines', editors: [] },
         { key: '␣vl', desc: 'Toggle sticky lines', editors: [] },
         { key: '␣vn', desc: 'Toggle line numbers', editors: [] },
@@ -244,7 +241,6 @@ export function defineLeaderKeys() {
       group: 'Editor Settings',
       key: 'z',
       keymap: [
-        { key: '␣␣z', desc: 'Settings', editors: [] },
         { key: '␣zj', desc: 'Settings JSON', editors: [] },
         { key: '␣zJ', desc: 'Keymap JSON', editors: [] },
         { key: '␣zk', desc: 'Keymap', editors: [] },
