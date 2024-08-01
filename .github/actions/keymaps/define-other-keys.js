@@ -15,6 +15,7 @@ export function defineOtherKeys() {
         },
         { key: 'gs', desc: 'Select file in project view', editors: [ws, vs] },
         { key: 'gS', desc: 'Select in popup', editors: [ws] },
+        { key: '⌥w', desc: 'Close other tabs', editors: all },
       ],
     },
     {
