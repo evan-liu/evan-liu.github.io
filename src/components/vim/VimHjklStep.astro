@@ -1,0 +1,13 @@
+---
+import VimEditor from '@components/vim/VimEditor.astro'
+---
+
+<VimEditor step="hjkl" />
+
+<script>
+  import { vimSteps } from '@lib/vim-steps.ts'
+
+  let value = `let step = "hjkl"`
+
+  vimSteps.registerStep('hjkl', { value })
+</script>

@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cn } from '@lib/utils'
+
+interface Props extends HTMLAttributes<'div'> {
+  step: string
+}
+let { step, class: className, ...attr } = Astro.props
+---
+
+<div
+  {...attr}
+  id="vimEditor"
+  data-step={step}
+  class={cn('not-content block w-full h-80 relative', className)}>
+</div>
+
+<script>
+  import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
+  import { type VimStep, vimSteps } from '@lib/vim-steps'
+
+  Object.assign(window, {
+    MonacoEnvironment: { getWorker: () => new TsWorker() },
+  })
+
+  let element = document.getElementById('vimEditor')
+  let step = element.dataset.step as VimStep
+  vimSteps.initEditor(step, element)
+</script>
