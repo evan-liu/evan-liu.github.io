@@ -19,9 +19,10 @@ class VimSteps {
     activate?: (editor: monaco.editor.IStandaloneCodeEditor) => void,
   ) {
     this.steps[step] = () => {
+      let darkTheme = document.documentElement.dataset.theme == 'dark'
       let editor = monaco.editor.create(this.domElement!, {
         language: 'typescript',
-        theme: 'vs-dark',
+        theme: darkTheme ? 'vs-dark' : 'vs',
         cursorStyle: 'block',
         scrollBeyondLastLine: false,
         minimap: { enabled: false },

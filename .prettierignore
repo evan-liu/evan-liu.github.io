@@ -8,3 +8,4 @@ dist/
 .astro/
 
 .idea/
+.vscode/project-snippets.code-snippets

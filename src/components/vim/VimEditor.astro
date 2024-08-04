@@ -12,7 +12,11 @@ let { step, class: className, ...attr } = Astro.props
   {...attr}
   id="vimEditor"
   data-step={step}
-  class={cn('not-content block w-full h-80 relative', className)}>
+  class={cn(
+    'not-content block w-full h-80',
+    'rounded-lg border border-sl-gray-6 overflow-hidden',
+    className,
+  )}>
 </div>
 
 <script>
@@ -27,3 +31,10 @@ let { step, class: className, ...attr } = Astro.props
   let step = element.dataset.step as VimStep
   vimSteps.initEditor(step, element)
 </script>
+
+<style>
+  #vimEditor :global(.monaco-editor) {
+    --vscode-editorGutter-background: var(--sl-color-bg);
+    --vscode-editor-background: var(--sl-color-bg);
+  }
+</style>
