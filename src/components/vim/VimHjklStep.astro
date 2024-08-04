@@ -6,8 +6,47 @@ import VimEditor from '@components/vim/VimEditor.astro'
 
 <script>
   import { vimSteps } from '@lib/vim-steps.ts'
+  import { modifierKeys } from '@lib/modifier-keys'
+  import { KeyCode } from 'monaco-editor'
 
-  let value = `let step = "hjkl"`
+  let value = `\
+let desc = \`
+ h j k l
+ ← ↓ ↑ →
+\`
+`
 
-  vimSteps.registerStep('hjkl', { value })
+  vimSteps.registerStep('hjkl', { value }, (editor) => {
+    editor.onKeyDown((e) => {
+      e.preventDefault()
+      e.stopPropagation()
+
+      if (modifierKeys(e.browserEvent).length) return
+
+      let position = editor.getPosition()
+      let model = editor.getModel()
+
+      if (e.keyCode == KeyCode.KeyH) {
+        if (position.column > 1) {
+          editor.setPosition(position.delta(0, -1))
+        }
+      } else if (e.keyCode == KeyCode.KeyJ) {
+        if (position.lineNumber < model.getLineCount()) {
+          let line = position.lineNumber + 1
+          let column = Math.min(model.getLineLength(line), position.column)
+          editor.setPosition(position.with(line, column))
+        }
+      } else if (e.keyCode == KeyCode.KeyK) {
+        if (position.lineNumber > 1) {
+          let line = position.lineNumber - 1
+          let column = Math.min(model.getLineLength(line), position.column)
+          editor.setPosition(position.with(line, column))
+        }
+      } else if (e.keyCode == KeyCode.KeyL) {
+        if (position.column < model.getLineMaxColumn(position.lineNumber) - 1) {
+          editor.setPosition(position.delta(0, 1))
+        }
+      }
+    })
+  })
 </script>
