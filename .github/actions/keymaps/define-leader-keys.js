@@ -203,6 +203,7 @@ export function defineLeaderKeys() {
         { key: '␣␣v', desc: 'View popup', editors: [] },
         { key: '␣vc', desc: 'Toggle breadcurmbs', editors: [] },
         { key: '␣vb', desc: 'Toggle tool buttons', editors: [] },
+        { key: '␣vg', desc: 'Toggle gutter icons', editors: [] },
         { key: '␣vG', desc: 'Show gutter icons settings', editors: [] },
         { key: '␣vi', desc: 'Toggle indent lines', editors: [] },
         { key: '␣vl', desc: 'Toggle sticky lines', editors: [] },
