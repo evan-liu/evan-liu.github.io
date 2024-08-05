@@ -2,19 +2,19 @@
 import VimEditor from '@components/vim/VimEditor.astro'
 ---
 
-<VimEditor step="hjkl" />
+<VimEditor step="hjkl" class="h-24 w-80" />
 
 <script>
+  import { KeyCode } from 'monaco-editor'
   import { vimSteps } from '@lib/vim-steps.ts'
   import { modifierKeys } from '@lib/modifier-keys'
-  import { KeyCode } from 'monaco-editor'
 
   let value = `\
-let desc = \`
- h j k l
- ← ↓ ↑ →
-\`
-`
+let moveAround = \`
+|    k    |        ↑      |
+|  h   l  |  ← h j k l →  |
+|    j    |      ↓        |
+\``
 
   vimSteps.registerStep('hjkl', { value }, (editor) => {
     editor.onKeyDown((e) => {

@@ -11,7 +11,7 @@
   "importComponent": {
     "prefix": "importComponent",
     "body": [
-      "import ${1/.*\\///} from '@components/${1|BrewInstallCask,BrewfileCask,BrewfileMas,DownloadAppStore,DownloadCard,ExternalLinkCard,Footer,LineMarker,Link,LucideIcon,agile/AgileManifesto,agile/AgileManifestoAuthors,agile/AgilePrinciples,agile/AgileTimelineItem,agile/AgileValue,agile/XPPractices,editors/EditorIcon,editors/EditorName,editors/EditorsSupport,editors/KeyBinding|}.astro'"
+      "import ${1/.*\\///} from '@components/${1|BrewInstallCask,BrewfileCask,BrewfileMas,DownloadAppStore,DownloadCard,ExternalLinkCard,Footer,LineMarker,Link,LucideIcon,agile/AgileManifesto,agile/AgileManifestoAuthors,agile/AgilePrinciples,agile/AgileTimelineItem,agile/AgileValue,agile/XPPractices,editors/EditorIcon,editors/EditorName,editors/EditorsSupport,editors/KeyBinding,vim/VimEditor,vim/VimHjklStep|}.astro'"
     ],
     "scope": "mdx"
   }
