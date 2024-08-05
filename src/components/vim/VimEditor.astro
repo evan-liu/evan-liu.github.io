@@ -21,7 +21,7 @@ let { step, class: className, ...attr } = Astro.props
 
 <script>
   import TsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
-  import { type VimStep, vimSteps } from '@lib/vim-steps'
+  import { type VimStep, vimSteps } from '@lib/vim/vim-steps'
 
   Object.assign(window, {
     MonacoEnvironment: { getWorker: () => new TsWorker() },
@@ -36,5 +36,11 @@ let { step, class: className, ...attr } = Astro.props
   #vimEditor :global(.monaco-editor) {
     --vscode-editorGutter-background: var(--sl-color-bg);
     --vscode-editor-background: var(--sl-color-bg);
+  }
+  :global([data-theme='dark'] .monaco-editor .cursor.vim-cursor-target) {
+    @apply bg-green-500;
+  }
+  :global([data-theme='light'] .monaco-editor .cursor.vim-cursor-target) {
+    @apply bg-green-700;
   }
 </style>

@@ -1,26 +1,27 @@
 import * as monaco from 'monaco-editor'
+import type { Editor } from '@lib/vim/monaco.ts'
 
 export type VimStep = 'hjkl'
 
 class VimSteps {
   private domElement?: HTMLElement
   private step?: VimStep
-  private steps = {} as Record<VimStep, () => void>
+  private steps = {} as Record<VimStep, (domElement: HTMLElement) => void>
 
   public initEditor(step: VimStep, domElement: HTMLElement) {
     this.step = step
     this.domElement = domElement
-    this.steps[step]?.()
+    this.steps[step]?.(domElement)
   }
 
   public registerStep(
     step: VimStep,
     options?: monaco.editor.IStandaloneEditorConstructionOptions,
-    activate?: (editor: monaco.editor.IStandaloneCodeEditor) => void,
+    activate?: (editor: Editor, domElement: HTMLElement) => void,
   ) {
-    this.steps[step] = () => {
+    this.steps[step] = (domElement: HTMLElement) => {
       let darkTheme = document.documentElement.dataset.theme == 'dark'
-      let editor = monaco.editor.create(this.domElement!, {
+      let editor = monaco.editor.create(domElement, {
         language: 'typescript',
         theme: darkTheme ? 'vs-dark' : 'vs',
         cursorStyle: 'block',
@@ -29,11 +30,11 @@ class VimSteps {
         ...options,
       })
       editor.focus()
-      activate?.(editor)
+      activate?.(editor, domElement)
     }
 
     if (this.domElement && this.step == step) {
-      this.steps[step]()
+      this.steps[step](this.domElement)
     }
   }
 }
