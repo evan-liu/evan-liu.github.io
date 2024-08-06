@@ -37,4 +37,7 @@ export default defineConfig({
     }),
     tailwind({ applyBaseStyles: false }),
   ],
+  vite: {
+    define: { 'import.meta.vitest': 'undefined' },
+  },
 })
