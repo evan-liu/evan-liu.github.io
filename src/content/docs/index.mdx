@@ -5,6 +5,7 @@ tableOfContents: false
 
 import ExternalLinkCard from '@components/ExternalLinkCard.astro'
 import Link from '@components/Link.astro'
+import { CardGrid, LinkCard } from '@astrojs/starlight/components'
 
 export const components = { a: Link }
 
@@ -15,9 +16,7 @@ Welcome to my [Digital Garden](https://joelhooks.com/digital-garden/), where I s
 - 💭 Thoughts and opinions
 - 👨‍💻 Experiences and stories
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components'
-
-### Projects
+## Projects
 
 <CardGrid>
   <ExternalLinkCard
@@ -32,7 +31,7 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components'
   />
 </CardGrid>
 
-### Productivity
+## Productivity
 
 <CardGrid>
   <LinkCard title="👨‍💻 A Lazy Developer" href="productivity/lazy-developer" />
@@ -40,7 +39,7 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components'
   <LinkCard title="🛠️ Tools I use on Mac" href="productivity/mac/homebrew/" />
 </CardGrid>
 
-### Software Engineering
+## Software Engineering
 
 <CardGrid>
   <LinkCard title="📚 Agile" href="software-engineering/agile" />
@@ -50,8 +49,14 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components'
   />
 </CardGrid>
 
-### Programming
+## Programming
 
 <CardGrid>
   <LinkCard title="💭 Coding Style" href="programming/coding-style" />
+</CardGrid>
+
+### React
+
+<CardGrid>
+  <LinkCard title="💭 Latest Ref Pattern" href="programming/react/latest-ref" />
 </CardGrid>

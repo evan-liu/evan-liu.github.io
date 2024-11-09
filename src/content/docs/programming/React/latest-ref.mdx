@@ -1,0 +1,139 @@
+---
+title: 💭 React Latest Ref Pattern
+sidebar:
+  label: 💭 Latest Ref Pattern
+---
+
+import { LatestRefExample } from '@components/react/latest-ref-example.tsx'
+
+I wasn't a fan of React until it introduced hooks, especially `useEffect()`, which makes lifecycle management much cleaner compared to all other client-side platforms I've worked with, as the initialization code and its cleanup code are colocated.
+
+<div className="flex *:flex-1 gap-4 not-content">
+
+```ts title="Lifecycle methods"
+onInit() {
+  init_block_1
+  init_block_2
+  init_block_3
+  ...
+}
+
+onDestroy() {
+  cleanup_block_1
+  cleanup_block_2
+  cleanup_block_3
+  ...
+}
+```
+
+```ts title="useEffect()"
+useEffect(() => {
+  init_block_1
+  return cleanup_block_1
+}, [])
+useEffect(() => {
+  init_block_2
+  return cleanup_block_2
+}, [])
+useEffect(() => {
+  init_block_3
+  return cleanup_block_3
+}, [])
+...
+```
+
+</div>
+
+## The Problem
+
+However, the API's cleanliness comes with a cost. The dependency array is confusing and error-prone. If something is missed, the effect may not get triggered when it should, or it may use stale values in the effect closure.
+
+The React team turned to linters and created the "react-hooks/exhaustive-deps" ESLint rule, which brings its own problem of triggering effects more than necessary. I wish the `useEffect()` API was designed with separate parameters for:
+
+- Triggering the effect (the dependency array)
+- Updating the values used inside the effect (another parameter)
+
+## The Solution
+
+So I started to use the dependency array only to trigger the effect and used the `useRef()` hook to get the latest value inside the effect.
+
+I learned from [Epic React by Kent C. Dodds](https://www.epicreact.dev/) that this is called the [Latest Ref](https://github.com/epicweb-dev/advanced-react-patterns/tree/main/exercises/02.latest-ref#latest-ref) pattern.
+
+And I implemented the API I wished for:
+
+```ts title="useLatestRefEffect()"
+import { type DependencyList, useEffect, useRef } from 'react'
+
+export function useLatestRefEffect<const T extends { [key: string]: any }>(
+  effect: (latest: T) => ReturnType<typeof useEffect>,
+  deps: DependencyList,
+  latest: T,
+) {
+  let latestRef = useRef(latest)
+  let proxyRef = useRef<T>()
+  useEffect(() => {
+    latestRef.current = latest
+  })
+  useEffect(() => {
+    if (!proxyRef.current) {
+      proxyRef.current = new Proxy(latestRef, {
+        get: (target, p) => target.current[p as keyof T],
+      }) as unknown as T
+    }
+    return effect(proxyRef.current)
+  }, deps)
+}
+```
+
+```ts title="Usage"
+useLatestRefEffect(
+  (latest) => {
+    // latest.value is always up to date
+  },
+  [dep], // Triggers the effect
+  { value }, // Only update value
+)
+```
+
+## Example
+
+Here is a simple example, which validates the user's input asynchronously, with a mock check that returns `true` if the length of the value is an odd number, in a random duration between 200ms and 1s.
+
+<LatestRefExample client:load />
+
+It only triggers the async validation when the input value changes, so we only want `value` in the dependency array.
+
+Once the result comes back, we want to use the latest values in the callback.
+
+There are other ways to achieve this and some may be simpler. Below is just to showcase the usage of `useLatestRefEffect()`, which separates the concerns to re-trigger the effect, and keep the values used inside the effect up to date.
+
+```tsx
+export function LatestRefExample() {
+  let [value, setValue] = useState('')
+  let [result, setResult] = useState<boolean | null>(null)
+  useLatestRefEffect(
+    (latest) => {
+      setResult(null)
+      check(value).then(
+        (valid) => latest.value == value && latest.setResult(valid),
+      )
+    },
+    [value],
+    { value, setResult },
+  )
+  return (
+    <div>
+      <label>
+        Value:
+        <input value={value} onChange={(e) => setValue(e.target.value)} />
+      </label>
+      <span>{result == null ? 'Checking...' : `Result: ${result}`}</span>
+    </div>
+  )
+}
+
+async function check(handle: string) {
+  await new Promise((resolve) => setTimeout(resolve, 200 + Math.random() * 800))
+  return handle.length % 2 == 1
+}
+```
