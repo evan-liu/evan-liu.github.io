@@ -1,0 +1,113 @@
+---
+title: 👨‍💻 Migrate to React
+---
+
+import Link from '@components/Link.astro'
+
+export const components = { a: Link }
+
+I joined a team building a SaaS web app in [AngularJS](https://angularjs.org/)
+in 2017 and started migrating to Angular soon after. I took the
+"[Strangler Fig](https://martinfowler.com/bliki/StranglerFigApplication.html)"
+approach, migrating the web app page by page. It wasn't easy, as both AngularJS
+and Angular are heavy frameworks, and the bridging channel was not
+straightforward to use.
+
+The migration was a success in the end. The new Angular codebase served us well
+for years until the UI needed modernization, and we decided to migrate to React
+at the same time for the unbeatable React ecosystem.
+
+## React Islands
+
+We decided to use the "[Strangler Fig](https://martinfowler.com/bliki/StranglerFigApplication.html)"
+approach again, and this time, migrating from Angular to React is surprisingly
+more straightforward than from AngularJS to Angular. React positions itself as a
+view library to render any part of the UI. So I took inspiration from
+[Astro Islands](https://docs.astro.build/en/concepts/islands/),
+putting "React Islands" into the Angular web app for any parts of the UI
+starting modernization, just like "vines that germinate in a nook of a tree".
+
+```ts
+@Directive({ selector: '[reactIsland]' })
+export class ReactIslandDirective<Comp extends ElementType> {
+  // The React component to render
+  reactComponent = input.required<Comp>({ alias: 'reactIsland' })
+  // Props passing to the React component
+  props = input<ComponentProps<Comp>>()
+
+  // The root to render the React component
+  private root = createRoot(inject(ElementRef).nativeElement)
+  // The Angular Injector for integrating with the host Angular app
+  private injector = inject(Injector)
+
+  // Rerender the React component when props change
+  ngOnChanges() {
+    this.root.render(
+      createElement(this.reactComponent(), {
+        injector: this.injector,
+        ...this.props(),
+      }),
+    )
+  }
+  ngOnDestroy() {
+    this.root.unmount()
+  }
+}
+
+// Usage:
+// <div [reactIsland]="ReactComp" [props]="compProps"></div>
+```
+
+## Feature Flags
+
+To avoid interrupting users while still gaining early feedback on the UI
+modernization, we hide our "React Islands" under feature flags, only giving
+access to a small number of users and allowing them to opt out.
+
+So we need to use feature flags to solve three problems at the same time:
+
+1. Rolling out the "opt-in" option to users.
+2. Allowing users to toggle the new UI on and off.
+3. Hiding the work-in-progress changes as usual.
+
+We use a "master flag" for both 1 and 2:
+
+- Add the user to the flag to grant them the UI version toggle.
+- Update the flag value when users toggle the new UI on and off.
+
+Then create other flags for each work-in-progress UI iteration.
+
+## Drawing Nutrients
+
+A Strangler Fig lives on the host tree. "React Islands" need to "draw nutrients"
+from the Angular app for user interactions. The Angular component hosting the
+"React Islands" can pass callbacks as props to handle user integration. To avoid
+"props drilling," the root of "React Islands" can also provide a React context
+for the child components to get the Angular Injector via a `useInjector()` hook
+to access any service from the Angular side.
+
+One example is data sync. When a piece of data is re-fetched with an update or
+mutated from either side of the system, the other part of the app rendering the
+same value needs to be synced.
+
+I built a solution in Angular that works like `Redux + ReactQuery`, which caches
+data using keys like [`ReactQuery`](https://tanstack.com/query), with a central
+store and dispatches changes like [`Redux`](https://redux.js.org/), using a
+simplified "Entity"-based API. Until we completely phase out the old UI, we will
+keep using the same data layer in both systems.
+
+This creates "code that will go away once the modernization is complete," but
+as [Martin Fowler said](https://martinfowler.com/bliki/StranglerFigApplication.html):
+
+> While this may appear to be a waste, the reduced risk and earlier value from the
+> gradual approach outweigh its costs
+
+## Growing Roots
+
+For the UI modernization, we may only need to "grow the canopy." However, to
+eventually migrate off Angular to React, we also need to "grow the roots". We
+will rewrite the `useInjector()`-based code in "React ways". We may start
+replacing whole pages once the "Strangler Fig" on the page fully grows its roots,
+and eventually the "Angular tree" will die.
+
+It is not done yet, but it is going well.

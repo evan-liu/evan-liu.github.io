@@ -6,6 +6,10 @@ sidebar:
 
 import { LatestRefExample } from '@components/react/latest-ref-example.tsx'
 
+import Link from '@components/Link.astro'
+
+export const components = { a: Link }
+
 I wasn't a fan of React until it introduced hooks, especially `useEffect()`, which makes lifecycle management much cleaner compared to all other client-side platforms I've worked with, as the initialization code and its cleanup code are colocated.
 
 <div className="flex *:flex-1 gap-4 not-content">

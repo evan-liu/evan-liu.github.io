@@ -31,6 +31,10 @@ export default defineConfig({
           label: 'Programming',
           autogenerate: { directory: 'programming' },
         },
+        {
+          label: 'Stories',
+          autogenerate: { directory: 'stories' },
+        },
       ],
       customCss: ['./src/tailwind.css'],
       components: {
