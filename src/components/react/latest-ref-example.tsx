@@ -6,7 +6,7 @@ export function useLatestRefEffect<const T extends { [key: string]: any }>(
   latest: T,
 ) {
   let latestRef = useRef(latest)
-  let proxyRef = useRef<T>()
+  let proxyRef = useRef<T>(undefined)
   useEffect(() => {
     latestRef.current = latest
   })
