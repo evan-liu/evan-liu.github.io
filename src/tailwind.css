@@ -1,3 +1,58 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme inline {
+  --color-accent-50: var(--color-indigo-50);
+  --color-accent-100: var(--color-indigo-100);
+  --color-accent-200: var(--color-indigo-200);
+  --color-accent-300: var(--color-indigo-300);
+  --color-accent-400: var(--color-indigo-400);
+  --color-accent-500: var(--color-indigo-500);
+  --color-accent-600: var(--color-indigo-600);
+  --color-accent-700: var(--color-indigo-700);
+  --color-accent-800: var(--color-indigo-800);
+  --color-accent-900: var(--color-indigo-900);
+  --color-accent-950: var(--color-indigo-950);
+
+  --color-gray-50: var(--color-zinc-50);
+  --color-gray-100: var(--color-zinc-100);
+  --color-gray-200: var(--color-zinc-200);
+  --color-gray-300: var(--color-zinc-300);
+  --color-gray-400: var(--color-zinc-400);
+  --color-gray-500: var(--color-zinc-500);
+  --color-gray-600: var(--color-zinc-600);
+  --color-gray-700: var(--color-zinc-700);
+  --color-gray-800: var(--color-zinc-800);
+  --color-gray-900: var(--color-zinc-900);
+  --color-gray-950: var(--color-zinc-950);
+
+  --color-sl-white: var(--sl-color-white);
+  --color-sl-gray-1: var(--sl-color-gray-1);
+  --color-sl-gray-2: var(--sl-color-gray-2);
+  --color-sl-gray-3: var(--sl-color-gray-3);
+  --color-sl-gray-4: var(--sl-color-gray-4);
+  --color-sl-gray-5: var(--sl-color-gray-5);
+  --color-sl-gray-6: var(--sl-color-gray-6);
+  --color-sl-gray-7: var(--sl-color-gray-7, var(--sl-color-gray-6));
+  --color-sl-black: var(--sl-color-black);
+  --color-sl-accent-low: var(--sl-color-accent-low);
+  --color-sl-accent: var(--sl-color-accent);
+  --color-sl-accent-high: var(--sl-color-accent-high);
+  --color-sl-bg: var(--sl-color-bg);
+  --color-sl-text: var(--sl-color-text);
+  --color-sl-text-accent: var(--sl-color-text-accent);
+
+  --shadow-sl-sm: var(--sl-shadow-sm);
+  --shadow-sl-md: var(--sl-shadow-md);
+  --shadow-sl-lg: var(--sl-shadow-lg);
+}
+
+.sl-anchor-link {
+  @apply no-underline;
+  > svg:last-child {
+    @apply hidden; /* Hide the arrow icon after the link icon */
+  }
+}

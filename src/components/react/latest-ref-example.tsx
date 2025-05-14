@@ -34,13 +34,13 @@ export function LatestRefExample() {
     { value, setResult },
   )
   return (
-    <div className="not-content mt-4 rounded-lg border border-sl-gray-5 p-4">
+    <div className="not-content border-sl-gray-5 mt-4 rounded-lg border p-4">
       <label>
         Value:
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="ml-2 rounded border border-sl-gray-5 px-2"
+          className="border-sl-gray-5 ml-2 rounded border px-2"
         />
       </label>
       <span className="ml-4">

@@ -11,5 +11,5 @@ let target = external ? '_blank' : props.target
 
 <a target={target} {...props} class={cn(props.class, 'inline-flex')}>
   <slot />
-  <Icon name={external ? 'external' : 'right-arrow'} />
+  <Icon name={external ? 'external' : 'right-arrow'} class="h-auto" />
 </a>

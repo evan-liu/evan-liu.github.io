@@ -23,13 +23,13 @@ let isGitHub = typeof href == 'string' && href.startsWith('https://github.com/')
       {...attributes}
       href={href}
       target="_blank"
-      class="text-lg font-semibold leading-[1.2] text-sl-white no-underline">
+      class="text-sl-white text-lg leading-[1.2] font-semibold no-underline">
       <span class="absolute inset-0"></span>
       <span set:html={title} />
     </a>
     {
       description && (
-        <span class="leading-normal text-sl-gray-3" set:html={description} />
+        <span class="text-sl-gray-3 leading-normal" set:html={description} />
       )
     }
   </span>

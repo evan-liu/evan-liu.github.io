@@ -14,20 +14,12 @@ interface Props extends Omit<HTMLAttributes<'svg'>, 'width' | 'height'> {
   color?: string
 }
 
-let { icon, size = '1em', color, ...rest } = Astro.props
+let { icon, size = '1em', color, ...svgProps } = Astro.props
 if (!(icon in icons)) {
   throw new Error(`${icon} not in: ${Object.keys(icons).join(', ')}`)
 }
 
-let [, attributesData, childrenData = []] = icons[icon]
-
-let attributes = {
-  ...rest,
-  ...attributesData,
-  ...{ width: size, height: size },
-  ...(color ? { stroke: color } : null),
-}
-let childrenHtml = childrenData
+let childrenHtml = icons[icon]
   .map(
     ([tag, attr]) =>
       `<${tag} ${Object.entries(attr)
@@ -37,4 +29,15 @@ let childrenHtml = childrenData
   .join('\n')
 ---
 
-<svg {...attributes} set:html={childrenHtml} />
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke={color || 'currentColor'}
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  width={size}
+  height={size}
+  {...svgProps}
+  set:html={childrenHtml}
+/>

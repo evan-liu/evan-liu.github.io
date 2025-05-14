@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
-import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,7 +9,13 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'EvanLiu.dev',
-      social: { github: 'https://github.com/evan-liu/evan-liu.github.io' },
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/evan-liu/',
+        },
+      ],
       sidebar: [
         {
           label: 'Productivity',
@@ -41,7 +47,9 @@ export default defineConfig({
         Footer: './src/components/Footer.astro',
       },
     }),
-    tailwind({ applyBaseStyles: false }),
     react(),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })

@@ -4,15 +4,15 @@
     "body": [
       "import Link from '@components/Link.astro'",
       "",
-      "export const components = { a: Link }"
+      "export const components = { a: Link }",
     ],
-    "scope": "mdx"
+    "scope": "mdx",
   },
   "importComponent": {
     "prefix": "importComponent",
     "body": [
-      "import ${1/.*\\///} from '@components/${1|BrewInstallCask,BrewfileCask,BrewfileMas,DownloadAppStore,DownloadCard,ExternalLinkCard,Footer,LineMarker,Link,LucideIcon,agile/AgileManifesto,agile/AgileManifestoAuthors,agile/AgilePrinciples,agile/AgileTimelineItem,agile/AgileValue,agile/XPPractices,editors/EditorIcon,editors/EditorName,editors/EditorsSupport,editors/KeyBinding|}.astro'"
+      "import ${1/.*\\///} from '@components/${1|BrewInstallCask,BrewfileCask,BrewfileMas,DownloadAppStore,DownloadCard,ExternalLinkCard,Footer,LineMarker,Link,LucideIcon,agile/AgileManifesto,agile/AgileManifestoAuthors,agile/AgilePrinciples,agile/AgileTimelineItem,agile/AgileValue,agile/XPPractices,editors/EditorIcon,editors/EditorName,editors/EditorsSupport,editors/KeyBinding|}.astro'",
     ],
-    "scope": "mdx"
-  }
+    "scope": "mdx",
+  },
 }
