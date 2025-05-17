@@ -49,10 +49,3 @@
   --shadow-sl-md: var(--sl-shadow-md);
   --shadow-sl-lg: var(--sl-shadow-lg);
 }
-
-.sl-anchor-link {
-  @apply no-underline;
-  > svg:last-child {
-    @apply hidden; /* Hide the arrow icon after the link icon */
-  }
-}

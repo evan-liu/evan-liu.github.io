@@ -1,0 +1,175 @@
+---
+title: 📚 Domain-driven design (DDD)
+sidebar:
+  label: 📚 DDD
+---
+
+When software systems grow, especially in complex business domains, many evolve into a “Big Ball of Mud.”
+This describes systems with tangled logic, messy code, and unclear dependencies, making them difficult to maintain.
+
+```mermaid
+graph LR
+  A[" "] --> B1[" "] --> B[" "]
+  A --> C1[" "] --> C[" "]
+  B --> D1[" "] --> D[" "]
+  C --> D
+  D --> E1[" "] --> E[" "]
+  D --> F1[" "] --> F[" "]
+  E --> G[" "]
+  F --> G
+  G --> H[" "]
+  B --> F
+  C --> E
+  H --> I1[" "] --> I[" "]
+  G --> I
+  D --> I
+  E --> J[" "]
+  J --> K1[" "] --> K[" "]
+  H --> L1[" "] --> L[" "]
+  L --> M1[" "] --> M[" "]
+  M --> N1[" "] --> N[" "]
+  G --> P[" "]
+  P --> Q1[" "] --> Q[" "]
+  Q --> R1[" "] --> R[" "]
+  I --> K
+  K --> M
+  E --> L
+  D --> M
+  F --> N
+  P --> L
+```
+
+Domain-driven design (DDD) focuses on capturing business logic directly in software.
+By aligning code with business concepts, it helps manage complexity and improves collaboration between technical and business teams.
+
+DDD handles complexity through two complementary approaches:
+
+- **Strategic design**: Divides the system into clear, manageable areas called bounded contexts.
+- **Tactical design**: Provides patterns for organizing domain logic within these contexts.
+
+## Vertical slicing into bounded contexts
+
+Each bounded context is responsible for a specific business area, isolated from other contexts.
+Within each bounded context, terms, models, and rules have clear meanings, preventing confusion and ambiguity.
+
+```mermaid
+flowchart LR
+  subgraph A["Bounded Context"]
+    direction TB
+    AR1[" "]
+    AR2[" "]
+    A1a[" "]
+    A1b[" "]
+    A2a[" "]
+    A2b[" "]
+    AR1 --> A1a
+    AR1 --> A1b
+    AR2 --> A2a
+    AR2 --> A2b
+  end
+
+  subgraph B["Bounded Context"]
+    direction TB
+    BR1[" "]
+    BR2[" "]
+    BR3[" "]
+    BR4[" "]
+    B1a[" "]
+    B1b[" "]
+    B2a[" "]
+    B3a[" "]
+    B3b[" "]
+    B4a[" "]
+    B4b[" "]
+    B1a1[" "]
+    B3a1[" "]
+    B3a2[" "]
+    B4a1[" "]
+    BR1 --> B1a
+    BR1 --> B1b
+    BR2 --> B2a
+    BR3 --> B3a
+    BR3 --> B3b
+    BR4 --> B4a
+    BR4 --> B4b
+    B1a --> B1a1
+    B3a --> B3a1
+    B3a --> B3a2
+    B4a --> B4a1
+  end
+
+  subgraph C["Bounded Context"]
+    direction TB
+    CR1[" "]
+    CR2[" "]
+    C1a[" "]
+    C1b[" "]
+    C2a[" "]
+    CR1 --> C1a
+    CR1 --> C1b
+    CR2 --> C2a
+  end
+
+  B --> A
+  B -.-> C
+```
+
+Bounded contexts ensure each area of the system has clear boundaries, making them easier to understand and evolve independently.
+
+## Horizontal slicing into layers
+
+After defining bounded contexts, each context is further organized into distinct horizontal layers:
+
+```txt
++------------------------+
+|    User Interface      |
++------------------------+
+|     Application        |
++------------------------+
+|        Domain          | <- Isolate the domain layer
++------------------------+
+|    Infrastructure      |
++------------------------+
+```
+
+The domain layer is the heart of the system.
+It encapsulates the business rules, decisions, and state changes that reflect real-world processes.
+A core principle in DDD is to isolate this layer from external concerns.
+
+## Tactical design within the domain layer
+
+The domain layer can be further structured using tactical patterns.
+A key concept is the aggregate, a cluster of domain objects treated as a single unit to enforce transactional consistency.
+Each aggregate has an aggregate root, which defines the boundary for transactions and ensures integrity within the domain.
+Other common tactical patterns include Entities, Value Objects, and Domain Events.
+
+```mermaid
+flowchart TD
+  subgraph D["Domain Layer"]
+    A1["Aggregate Root"] --> E1[" "]
+    E1 --> V1a[" "]
+    E1 --> V1b[" "]
+    A1 --> Ev1[" "]
+
+    A2["Aggregate Root"] --> E2[" "]
+    E2 --> V2a[" "]
+    A2 --> Ev2[" "]
+  end
+```
+
+Tactical design helps ensure the domain layer remains clean, focused, and directly aligned with business logic.
+
+## Case study: cal.com
+
+Cal.com is an open-source scheduling platform for managing availability and booking meetings.  
+Its complexity makes it ideal for demonstrating the advantages of DDD compared to simpler, toy examples.
+
+> Domain-driven design pays off best for ambitious projects, ...
+> Not all projects are ambitious.
+>
+> -- Eric Evans, Domain-Driven Design (the blue book)
+
+## Implementation: cal.com.alt
+
+We'll explore how DDD can be applied in a lightweight, pragmatic way with [cal.com.alt](https://github.com/evan-liu/cal.com.alt),  
+a TypeScript-based reimagining of cal.com.

@@ -1,0 +1,6 @@
+.sl-anchor-link {
+  @apply no-underline;
+  > svg:last-child {
+    @apply hidden; /* Hide the arrow icon after the link icon */
+  }
+}

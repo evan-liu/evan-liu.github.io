@@ -2,8 +2,8 @@ import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
 import react from '@astrojs/react'
 import tailwindcss from '@tailwindcss/vite'
+import mermaidToSvg from './src/plugins/mermaid-to-svg.js'
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://evanliu.dev',
   integrations: [
@@ -34,6 +34,21 @@ export default defineConfig({
           autogenerate: { directory: 'software-engineering' },
         },
         {
+          label: 'Domain-Driven Design',
+          items: [
+            'ddd/ddd',
+            // 'ddd/flashcards',
+            // {
+            //   label: 'Strategic Design',
+            //   collapsed: true,
+            // },
+            // {
+            //   label: 'Tactical Design',
+            //   collapsed: true,
+            // },
+          ],
+        },
+        {
           label: 'Programming',
           autogenerate: { directory: 'programming' },
         },
@@ -42,10 +57,17 @@ export default defineConfig({
           autogenerate: { directory: 'stories' },
         },
       ],
-      customCss: ['./src/tailwind.css'],
+      customCss: [
+        './src/styles/tailwind.css',
+        './src/styles/starlight.css',
+        './src/styles/mermaid.css',
+      ],
     }),
     react(),
   ],
+  markdown: {
+    remarkPlugins: [mermaidToSvg],
+  },
   vite: {
     plugins: [tailwindcss()],
   },

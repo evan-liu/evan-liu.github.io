@@ -1,0 +1,4 @@
+[data-theme='dark'] .mermaid .light-only,
+[data-theme='light'] .mermaid .dark-only {
+  display: none;
+}
