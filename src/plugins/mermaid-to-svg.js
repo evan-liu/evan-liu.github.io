@@ -6,7 +6,10 @@ let mermaidUrl = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
 /** @type {import('unified').Plugin} */
 export default function mermaidToSvg() {
   return async (tree) => {
-    let browser = await puppeteer.launch({ headless: 'new' })
+    let browser = await puppeteer.launch({ 
+      headless: 'new',
+      args: ['--no-sandbox'],
+    })
 
     let page = await browser.newPage()
     await page.goto('about:blank')
