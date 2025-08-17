@@ -33,21 +33,21 @@ export default defineConfig({
           label: 'Software Engineering',
           autogenerate: { directory: 'software-engineering' },
         },
-        {
-          label: 'Domain-Driven Design',
-          items: [
-            'ddd/ddd',
-            // 'ddd/flashcards',
-            // {
-            //   label: 'Strategic Design',
-            //   collapsed: true,
-            // },
-            // {
-            //   label: 'Tactical Design',
-            //   collapsed: true,
-            // },
-          ],
-        },
+        // {
+        //   label: 'Domain-Driven Design',
+        //   items: [
+        //     'ddd/ddd',
+        //     'ddd/flashcards',
+        //     {
+        //       label: 'Strategic Design',
+        //       collapsed: true,
+        //     },
+        //     {
+        //       label: 'Tactical Design',
+        //       collapsed: true,
+        //     },
+        //   ],
+        // },
         {
           label: 'Programming',
           autogenerate: { directory: 'programming' },
