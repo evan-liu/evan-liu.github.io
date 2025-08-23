@@ -1,0 +1,231 @@
+---
+title: 💭 Service Locator in TypeScript
+sidebar:
+  label: 💭 Service Locator
+---
+
+> Inversion of control is a common feature of frameworks, but it's something that comes at a price. It tends to be hard to understand and leads to problems when you are trying to debug. So on the whole I prefer to avoid it unless I need it. This isn't to say it's a bad thing, just that I think it needs to justify itself over the more straightforward alternative.
+>
+> — Martin Fowler [Service Locator vs Dependency Injection](https://martinfowler.com/articles/injection.html#ServiceLocatorVsDependencyInjection)
+
+## Why Dependency Injection Won
+
+The software industry mostly chose Dependency Injection (DI) over Service Locator (SL).
+
+- **Dependencies are visible**
+
+  - DI: You see what a class needs in its constructor
+  - SL: Dependencies are hidden inside the class
+
+- **Testing is easier**
+
+  - DI: Pass mocks to constructor
+  - SL: Need to configure a global service locator
+
+- **Less coupling**
+
+  - DI: Classes only depend on what they declare
+  - SL: Everything depends on the service locator
+
+- **Better reuse**
+
+  - DI: Classes can be reused in different contexts
+  - SL: Classes are tied to the locator
+
+- **Design feedback**
+
+  - DI: Long constructor = obvious problem
+  - SL: Easy to keep adding dependencies without noticing
+
+- **Framework support**
+  - Java’s Spring framework made DI popular
+  - Other languages copied the idea
+
+These were real problems in big Java projects.
+
+---
+
+## Dependency Injection in TypeScript
+
+But TypeScript is different from Java. DI has real problems here:
+
+- **Types disappear at runtime**  
+  You can’t inject interfaces. You need tokens, symbols, or decorators.
+
+- **Framework coupling**  
+  Example with Angular-style DI:
+
+```ts
+@Injectable()
+class UserService {
+  constructor(@Inject('Logger') private logger: Logger) {}
+}
+```
+
+Your class now depends on a DI framework.
+
+- **Complicated setup**  
+  To inject interfaces, you need special config:  
+  symbols, decorators, metadata. That’s a lot of ceremony for something simple.
+
+- **Testing gets harder**  
+  In TypeScript/JavaScript, mocking is already easy with structural typing:
+
+```ts
+userService = { processUser: vi.fn() }
+```
+
+A DI container adds more setup, not less.
+
+So in TypeScript, DI often feels like fighting the language.
+
+---
+
+## A Simple Service Locator
+
+Here’s a tiny service locator for TypeScript:
+
+```ts
+let registry = new Map<
+  symbol,
+  { instance?: unknown; factory?: () => unknown }
+>()
+
+export let serviceLocator = {
+  for<T>() {
+    let key = Symbol()
+    return [
+      function get(): T {
+        return (registry.get(key)?.instance ?? createInstance(key)) as T
+      },
+      function set(factory: () => T): void {
+        registry.set(key, { factory })
+      },
+    ] as const
+  },
+
+  reset() {
+    registry.clear()
+  },
+}
+
+function createInstance(key: symbol) {
+  let entry = registry.get(key)
+  if (!entry?.factory) {
+    throw new Error('Service not registered. Call set() first.')
+  }
+
+  let instance = entry.factory()
+  registry.set(key, { instance })
+  return instance
+}
+```
+
+---
+
+## How to Use It
+
+**1. Create services**
+
+```ts
+// logging.ts
+interface Logger {
+  log(message: string): void
+}
+
+export let [getLogger, setLogger] = serviceLocator.for<Logger>()
+```
+
+**2. Configure at startup**
+
+```ts
+// main.ts
+setLogger(() => new ConsoleLogger())
+setDatabase(() => new PostgresDatabase())
+```
+
+**3. Use anywhere**
+
+```ts
+class UserService {
+  constructor(private logger = getLogger()) {}
+
+  processUser(user: User) {
+    this.logger.log(`Processing user ${user.id}`)
+  }
+}
+```
+
+**4. Easy testing**
+
+```ts
+// Clean up after each test to prevent test pollution (or in global test setup)
+afterEach(() => {
+  serviceLocator.reset()
+})
+
+test('processes user', () => {
+  setLogger(() => ({ log: vi.fn() }))
+
+  let userService = new UserService()
+  userService.processUser(testUser)
+})
+```
+
+> **Note:**  
+> You can add `serviceLocator.reset()` in your global test setup (e.g. Vitest `setupFiles`) instead of using `afterEach()` in every test file.
+
+---
+
+## Why This SL Works
+
+Compare this service locator to DI in TypeScript:
+
+- **Dependencies visible**
+
+  - DI: Dependencies are explicit in the constructor signature.
+  - SL: Dependencies can be visible if you enforce calling `getX()` only inside constructors.
+
+- **Testing**
+
+  - DI: Need to pass mocks through constructors, or configure the DI container.
+  - SL: Uses `reset()` to clear registry and `setX(mock)` to inject mocks, which is simple and effective in TypeScript. You can also choose to enforce using SL only in constructors, making it the same as DI in practice.
+
+- **Coupling**
+
+  - DI: Classes depend on a DI framework (decorators, tokens, metadata).
+  - SL: Couples classes to the service locator, but no external framework is needed and works directly with true interfaces.
+
+- **Reuse**
+
+  - DI: Classes are tied to a DI framework, so reuse outside that framework is harder.
+  - SL: Classes are tied to the locator but the approach remains simple and framework-free.
+
+- **Design feedback**
+
+  - DI: A long constructor clearly signals a design problem.
+  - SL: You still get design feedback if `getX()` calls are restricted to constructors.
+
+```ts
+class UserManager {
+  constructor(
+    private logger = getLogger(),
+    private database = getDatabase(),
+    private notifier = getNotifier(),
+    ...
+  ) {}
+}
+```
+
+---
+
+## The Bottom Line
+
+For TypeScript apps, this service locator approach is:
+
+- Simple and type-safe
+- Easy to test
+- Framework-free
+- Works with the language instead of against it
+
+Sometimes the simple way is best.
