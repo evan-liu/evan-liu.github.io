@@ -121,6 +121,8 @@ function createInstance(key: symbol) {
 }
 ```
 
+This implementation creates **singletons by default** - each service is instantiated once and reused. The `Symbol()` creates a unique key for each service type, ensuring type safety without runtime overhead.
+
 ---
 
 ## How to Use It
@@ -147,6 +149,11 @@ setDatabase(() => new PostgresDatabase())
 **3. Use anywhere**
 
 ```ts
+interface User {
+  id: string
+  name: string
+}
+
 class UserService {
   constructor(private logger = getLogger()) {}
 
@@ -167,13 +174,14 @@ afterEach(() => {
 test('processes user', () => {
   setLogger(() => ({ log: vi.fn() }))
 
+  const testUser: User = { id: '123', name: 'Test User' }
   let userService = new UserService()
   userService.processUser(testUser)
 })
 ```
 
 > **Note:**  
-> You can add `serviceLocator.reset()` in your global test setup (e.g. Vitest `setupFiles`) instead of using `afterEach()` in every test file.
+> You can add `serviceLocator.reset()` in your global test setup (e.g. Vitest `setupFiles`) instead of using `afterEach()` in every test file. **Always reset between tests** to avoid sharing state across test cases.
 
 ---
 
@@ -227,5 +235,10 @@ For TypeScript apps, this service locator approach is:
 - Easy to test
 - Framework-free
 - Works with the language instead of against it
+
+**Considerations:**
+- Not suitable for apps with complex dependency graphs
+- Requires discipline to avoid hidden dependencies
+- Global state means careful test isolation is needed
 
 Sometimes the simple way is best.
